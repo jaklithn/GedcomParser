@@ -1,4 +1,4 @@
-﻿namespace Gedcom.Extenders
+﻿namespace GedcomParser.Extenders
 {
     public static class StringExtender
     {

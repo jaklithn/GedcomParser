@@ -1,11 +1,12 @@
 ﻿using System.IO;
 using System.Linq;
-using Gedcom.Entities;
-using Gedcom.Entities.Gedcom;
-using Gedcom.Services;
+using GedcomParser.Entities;
+using GedcomParser.Entities.Internal;
+using GedcomParser.Services;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Gedcom.Test
+
+namespace GedcomParser.Test
 {
     [TestClass]
     public class ImportTests
@@ -49,15 +50,15 @@ namespace Gedcom.Test
             var filePath = Path.Combine(baseDir, "Resources", "Windsor.ged");
             //var filePath = Path.Combine(baseDir, "Resources", "Kennedy.ged");
             //var filePath = Path.Combine(baseDir, "Resources", "TGC551.ged");
-            var gedcomParser = new GedcomParser();
+            var fileParser = new FileParser();
 
             // Act
-            gedcomParser.Parse(filePath);
+            fileParser.Parse(filePath);
 
             // Assert
-            Assert.IsTrue(gedcomParser.Persons.Count > 0);
-            Assert.IsTrue(gedcomParser.Relations.Count > 0);
-            var childStatusChildren = gedcomParser.Relations.OfType<ChildRelation>().Where(c => !string.IsNullOrEmpty(c.Pedigree)).ToList();
+            Assert.IsTrue(fileParser.Persons.Count > 0);
+            Assert.IsTrue(fileParser.Relations.Count > 0);
+            var childStatusChildren = fileParser.Relations.OfType<ChildRelation>().Where(c => !string.IsNullOrEmpty(c.Pedigree)).ToList();
             Assert.IsTrue(childStatusChildren.Count > 0);
         }
     }

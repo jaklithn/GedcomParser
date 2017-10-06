@@ -1,13 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using Gedcom.Entities.Gedcom;
+using GedcomParser.Entities.Internal;
 
-namespace Gedcom.Services
+
+namespace GedcomParser.Services
 {
-    public static class GedcomPrinter
+    internal static class DebugPrinter
     {
-        public static void PrintChunks(IEnumerable<GedcomChunk> chunks)
+        internal static void PrintChunks(IEnumerable<GedcomChunk> chunks)
         {
             foreach (var chunk in chunks)
             {
@@ -16,7 +17,7 @@ namespace Gedcom.Services
             }
         }
 
-        public static void PrintTypes(List<GedcomChunk> chunks)
+        internal static void PrintTypes(List<GedcomChunk> chunks)
         {
             var parentTypes = new Dictionary<string, HashSet<string>>();
             var levels = new GedcomChunkLevels();

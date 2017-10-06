@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 
-namespace Gedcom.Entities
+
+namespace GedcomParser.Entities
 {
     public class Address
     {

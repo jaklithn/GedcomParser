@@ -1,4 +1,4 @@
-﻿namespace Gedcom.Entities
+﻿namespace GedcomParser.Entities
 {
     public abstract class Relation
     {

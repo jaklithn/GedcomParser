@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 
-namespace Gedcom.Entities.Gedcom
+
+namespace GedcomParser.Entities.Internal
 {
     /// <summary>
     /// Keeps track of the current level hierarchy.

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 
-namespace Gedcom.Entities.Gedcom
+
+namespace GedcomParser.Entities.Internal
 {
     /// <summary>
     /// This represents a line from the GEDCOM file AND all its related sublines in a structured hierarchy.

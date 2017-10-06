@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using Gedcom.Entities;
-using Gedcom.Entities.Gedcom;
-using Gedcom.Extenders;
+using GedcomParser.Entities;
+using GedcomParser.Entities.Internal;
+using GedcomParser.Extenders;
 
-namespace Gedcom.Services
+
+namespace GedcomParser.Services
 {
-    public class GedcomParser
+    public class FileParser
     {
         private GedcomChunkLevels _gedcomChunkLevels;
         private List<GedcomChunk> _idChunks;
@@ -49,8 +50,8 @@ namespace Gedcom.Services
                 _gedcomChunkLevels.Set(chunk);
             }
 
-            GedcomPrinter.PrintChunks(topChunks);
-            GedcomPrinter.PrintTypes(topChunks);
+            DebugPrinter.PrintChunks(topChunks);
+            DebugPrinter.PrintTypes(topChunks);
 
             return topChunks;
         }

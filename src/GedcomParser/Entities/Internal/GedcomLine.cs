@@ -1,7 +1,8 @@
 ﻿using System;
-using Gedcom.Extenders;
+using GedcomParser.Extenders;
 
-namespace Gedcom.Entities.Gedcom
+
+namespace GedcomParser.Entities.Internal
 {
     /// <summary>
     /// Represents a line from the GEDCOM file parsed into its properties.
