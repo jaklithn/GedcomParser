@@ -6,11 +6,11 @@ namespace Gedcom.Entities.Gedcom
     /// Keeps track of the current level hierarchy.
     /// Just for temporary usage during parsing.
     /// </summary>
-    public class GedcomChunkLevels
+    internal class GedcomChunkLevels
     {
         private readonly Dictionary<int, GedcomChunk> _currentLevelChunks = new Dictionary<int, GedcomChunk>();
 
-        public void Set(GedcomChunk gedcomChunk)
+        internal void Set(GedcomChunk gedcomChunk)
         {
             if (_currentLevelChunks.ContainsKey(gedcomChunk.Level))
             {
@@ -19,7 +19,7 @@ namespace Gedcom.Entities.Gedcom
             _currentLevelChunks.Add(gedcomChunk.Level, gedcomChunk);
         }
 
-        public GedcomChunk GetParentChunk(GedcomChunk gedcomChunk)
+        internal GedcomChunk GetParentChunk(GedcomChunk gedcomChunk)
         {
             return _currentLevelChunks[gedcomChunk.Level - 1];
         }

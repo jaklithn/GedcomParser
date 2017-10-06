@@ -23,7 +23,7 @@ The GEDCOM file holds simple lines. They basically all have the same structure:
 
 The parser will first read all lines into a collection of GedcomLines.
 By using the Level property they are then structured into GedcomChunks. Each GedcomChunk represents a GedcomLine and a subcollection of GedcomChunks.
-The data is then parsed by processing all top chunks and their internal children and interpret the Data according to its Type.
+The data is then parsed by processing all top chunks and their internal children interpret the Data is interpreted according to its Type.
 The main chunks represent either individuals and families. All other chunks are sub structures or reference information.
 Individual maps directly to a regular person with all needed attributes.
 Family is a hub to describe the internal relations of a nuclear family.

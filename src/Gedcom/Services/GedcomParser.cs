@@ -62,24 +62,25 @@ namespace Gedcom.Services
             {
                 switch (chunk.Type)
                 {
-                    case "INDI":
-                        ParseIndividual(chunk);
-                        break;
                     case "FAM":
                         ParseFamily(chunk);
                         break;
 
-                    // Deliberately skip as irrelevant for our usecase
-                    case "HEAD":
-                    case "GEDC":
-                    case "SUBN":
-                    case "SUBM":
-                    case "SOUR":
-                    case "REPO":
+                    case "INDI":
+                        ParseIndividual(chunk);
+                        break;
+
+                    // Deliberately skipped as irrelevant for our usecase
                     case "CSTA":
-                    case "TRLR":
+                    case "GEDC":
+                    case "HEAD":
                     case "NOTE":
                     case "OBJE":
+                    case "REPO":
+                    case "SUBM":
+                    case "SUBN":
+                    case "SOUR":
+                    case "TRLR":
                         break;
 
                     default:
@@ -102,28 +103,12 @@ namespace Gedcom.Services
             {
                 switch (chunk.Type)
                 {
-                    case "NAME":
-                        var nameSections = chunk.Data.Split("/".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
-                        if (nameSections.Length > 0)
-                        {
-                            person.FirstName = nameSections[0];
-                        }
-                        if (nameSections.Length > 1)
-                        {
-                            person.LastName = nameSections[1];
-                        }
-                        break;
-
-                    case "SEX":
-                        person.Gender = chunk.Data;
+                    case "ADDR":
+                        person.Address = ParseAddress(chunk);
                         break;
 
                     case "BIRT":
                         person.Birth = ParseDatePlace(chunk);
-                        break;
-
-                    case "DEAT":
-                        person.Death = ParseDatePlace(chunk);
                         break;
 
                     case "BURI":
@@ -138,12 +123,28 @@ namespace Gedcom.Services
                         person.Baptized = ParseDatePlace(chunk);
                         break;
 
+                    case "DEAT":
+                        person.Death = ParseDatePlace(chunk);
+                        break;
+
                     case "EDUC":
                         person.Education = chunk.Data;
                         break;
 
-                    case "RELI":
-                        person.Religion = chunk.Data;
+                    case "HEAL":
+                        person.Health = chunk.Data;
+                        break;
+
+                    case "NAME":
+                        var nameSections = chunk.Data.Split("/".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+                        if (nameSections.Length > 0)
+                        {
+                            person.FirstName = nameSections[0];
+                        }
+                        if (nameSections.Length > 1)
+                        {
+                            person.LastName = nameSections[1];
+                        }
                         break;
 
                     case "NOTE":
@@ -154,8 +155,12 @@ namespace Gedcom.Services
                         person.Occupation = chunk.Data;
                         break;
 
-                    case "HEAL":
-                        person.Health = chunk.Data;
+                    case "RELI":
+                        person.Religion = chunk.Data;
+                        break;
+
+                    case "SEX":
+                        person.Gender = chunk.Data;
                         break;
 
                     case "TITL":
@@ -163,11 +168,11 @@ namespace Gedcom.Services
                         break;
 
 
-                    // Deliberately skip as irrelevant for our usecase
+                    // Deliberately skipped as irrelevant for our usecase
                     case "FAMS":
                     case "FAMC":
-                    case "OBJE":
                     case "HIST":
+                    case "OBJE":
                         break;
 
                     default:
@@ -189,12 +194,28 @@ namespace Gedcom.Services
             {
                 switch (chunk.Type)
                 {
+                    case "CHIL":
+                        var child = Persons.SingleOrDefault(p => p.Id == chunk.Reference);
+                        if (child != null)
+                        {
+                            children.Add(child);
+                        }
+                        break;
+
+                    case "DIV":
+                        divorce = ParseDatePlace(chunk);
+                        break;
+
                     case "HUSB":
                         var husband = Persons.SingleOrDefault(p => p.Id == chunk.Reference);
                         if (husband != null)
                         {
                             parents.Add(husband);
                         }
+                        break;
+
+                    case "MARR":
+                        marriage = ParseDatePlace(chunk);
                         break;
 
                     case "WIFE":
@@ -205,23 +226,7 @@ namespace Gedcom.Services
                         }
                         break;
 
-                    case "CHIL":
-                        var child = Persons.SingleOrDefault(p => p.Id == chunk.Reference);
-                        if (child != null)
-                        {
-                            children.Add(child);
-                        }
-                        break;
-
-                    case "MARR":
-                        marriage = ParseDatePlace(chunk);
-                        break;
-
-                    case "DIV":
-                        divorce = ParseDatePlace(chunk);
-                        break;
-
-                    // Deliberately skip as irrelevant for our usecase
+                    // Deliberately skipped as irrelevant for our usecase
 
 
                     default:
@@ -270,6 +275,65 @@ namespace Gedcom.Services
             return (chunk.SubChunks.SingleOrDefault(c => c.Type == "DATE")?.Data + " " + chunk.SubChunks.SingleOrDefault(c => c.Type == "TIME")?.Data).Trim();
         }
 
+        private Address ParseAddress(GedcomChunk addressChunk)
+        {
+            // Top level node can also contain a full address or first part of it ...
+            var address = new Address { Street = addressChunk.Data };
+
+            foreach (var chunk in addressChunk.SubChunks)
+            {
+                switch (chunk.Type)
+                {
+                    case "CONT":
+                    case "ADR1":
+                    case "ADR2":
+                    case "ADR3":
+                        address.Street += Environment.NewLine + chunk.Data;
+                        break;
+
+                    case "CITY":
+                        address.City += chunk.Data;
+                        break;
+
+                    case "STAE":
+                        address.State += chunk.Data;
+                        break;
+
+                    case "POST":
+                        address.ZipCode += chunk.Data;
+                        break;
+
+                    case "CTRY":
+                        address.Country += chunk.Data;
+                        break;
+
+                    case "PHON":
+                        address.Phone.Add(chunk.Data);
+                        break;
+
+                    case "EMAIL":
+                        address.Email.Add(chunk.Data);
+                        break;
+
+                    case "FAX":
+                        address.Fax.Add(chunk.Data);
+                        break;
+
+                    case "WWW":
+                        address.Web.Add(chunk.Data);
+                        break;
+
+                    // Deliberately skipped as irrelevant for our usecase
+
+
+                    default:
+                        throw new NotImplementedException($"ParseAddress: Type='{chunk.Type}' is not handled");
+                }
+            }
+
+            return address;
+        }
+
         private string ParseNote(GedcomChunk incomingChunk)
         {
             var noteChunk = incomingChunk;
@@ -289,6 +353,7 @@ namespace Gedcom.Services
                     case "CONC":
                         sb.Append(" " + chunk.Data);
                         break;
+
                     case "CONT":
                         sb.AppendLine(chunk.Data);
                         break;
@@ -299,6 +364,10 @@ namespace Gedcom.Services
             return sb.ToString();
         }
 
+        /// <summary>
+        /// Lookup possible information on child legal status.
+        /// It is stored in separate chunks outside the Individual and Family chunks.
+        /// </summary>
         private void AddStatus(ChildRelation childRelation)
         {
             var childChunk = _idChunks.SingleOrDefault(c => c.Id == childRelation.From.Id);
@@ -316,9 +385,11 @@ namespace Gedcom.Services
                                     case "PEDI":
                                         childRelation.Pedigree = chunk2.Data;
                                         break;
+
                                     case "STAT":
                                         childRelation.Validity = chunk2.Data;
                                         break;
+
                                     case "ADOP":
                                         var adoptionInfo = new List<string>();
                                         foreach (var chunk3 in chunk1.SubChunks)

@@ -17,5 +17,6 @@
         public string Occupation { get; set; }
         public string Health { get; set; }
         public string Title { get; set; }
+        public Address Address { get; set; }
     }
 }

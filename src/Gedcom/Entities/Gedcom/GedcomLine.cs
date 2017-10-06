@@ -6,16 +6,16 @@ namespace Gedcom.Entities.Gedcom
     /// <summary>
     /// Represents a line from the GEDCOM file parsed into its properties.
     /// </summary>
-    public class GedcomLine
+    internal class GedcomLine
     {
-        public int Level { get; protected set; }
-        public string Id { get; protected set; }
-        public string Type { get; protected set; }
-        public string Data { get; protected set; }
-        public string Reference { get; protected set; }
+        public int Level { get; }
+        public string Id { get; }
+        public string Type { get; }
+        public string Data { get; }
+        public string Reference { get; }
 
 
-        public GedcomLine(int level, string id, string type, string data, string reference)
+        internal GedcomLine(int level, string id, string type, string data, string reference)
         {
             Level = level;
             Id = id;
@@ -24,7 +24,7 @@ namespace Gedcom.Entities.Gedcom
             Reference = reference;
         }
 
-        public static GedcomLine Parse(string line)
+        internal static GedcomLine Parse(string line)
         {
             line = line.Trim();
             if (string.IsNullOrEmpty(line))
@@ -45,7 +45,7 @@ namespace Gedcom.Entities.Gedcom
             // Normal case is no Id
             var id = (string)null;
             var type = sections[1];
-            var data = sections.Length > 2 ? line.Substring(line.IndexOf(type)+type.Length).Trim() : null;
+            var data = sections.Length > 2 ? line.Substring(line.IndexOf(type) + type.Length).Trim() : null;
             var idReference = (string)null;
 
             // If there is an Id we take another approach
