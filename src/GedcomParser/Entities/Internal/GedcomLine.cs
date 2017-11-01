@@ -20,7 +20,7 @@ namespace GedcomParser.Entities.Internal
         {
             Level = level;
             Id = id;
-            Type = type;
+            Type = type.ToUpper();
             Data = data;
             Reference = reference;
         }

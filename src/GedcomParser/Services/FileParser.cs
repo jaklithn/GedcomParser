@@ -25,7 +25,7 @@ namespace GedcomParser.Services
             ParseTopChunks(topChunks);
         }
 
-        private List<GedcomChunk> GenerateChunks(string filePath)
+        internal List<GedcomChunk> GenerateChunks(string filePath)
         {
             _gedcomChunkLevels = new GedcomChunkLevels();
             Persons = new List<Person>();
@@ -50,9 +50,6 @@ namespace GedcomParser.Services
                 _gedcomChunkLevels.Set(chunk);
             }
 
-            DebugPrinter.PrintChunks(topChunks);
-            DebugPrinter.PrintTypes(topChunks);
-
             return topChunks;
         }
 
@@ -72,6 +69,8 @@ namespace GedcomParser.Services
                         break;
 
                     // Deliberately skipped as irrelevant for our usecase
+                    case "_GRP":
+                    case "_PLC":
                     case "CSTA":
                     case "GEDC":
                     case "HEAD":
@@ -104,8 +103,16 @@ namespace GedcomParser.Services
             {
                 switch (chunk.Type)
                 {
-                    case "ADDR":
-                        person.Address = ParseAddress(chunk);
+                    case "_UID":
+                        person.Uid = chunk.Data;
+                        break;
+
+                    case "ADOP":
+                        person.Adoption = ParseAdoption(chunk);
+                        break;
+
+                    case "BAPM":
+                        person.Baptized = ParseDatePlace(chunk);
                         break;
 
                     case "BIRT":
@@ -132,8 +139,28 @@ namespace GedcomParser.Services
                         person.Education = chunk.Data;
                         break;
 
+                    case "EMIG":
+                        person.Emigrated = ParseDatePlace(chunk);
+                        break;
+
+                    case "FACT":
+                        person.Note = ParseNote(person.Note, chunk);
+                        break;
+
+                    case "GRAD":
+                        person.Graduation = ParseDatePlace(chunk);
+                        break;
+
                     case "HEAL":
                         person.Health = chunk.Data;
+                        break;
+
+                    case "IDNO":
+                        person.IdNumber = chunk.Data;
+                        break;
+
+                    case "IMMI":
+                        person.Immigrated = ParseDatePlace(chunk);
                         break;
 
                     case "NAME":
@@ -148,12 +175,20 @@ namespace GedcomParser.Services
                         }
                         break;
 
+                    case "NATU":
+                        person.BecomingCitizen = ParseDatePlace(chunk);
+                        break;
+
                     case "NOTE":
-                        person.Note = ParseNote(chunk);
+                        person.Note = ParseNote(person.Note, chunk);
                         break;
 
                     case "OCCU":
                         person.Occupation = chunk.Data;
+                        break;
+
+                    case "RESI":
+                        person.Residence = ParseDatePlace(chunk);
                         break;
 
                     case "RELI":
@@ -170,10 +205,19 @@ namespace GedcomParser.Services
 
 
                     // Deliberately skipped as irrelevant for our usecase
+                    case "_GRP":
+                    case "CONF":
+                    case "DSCR":
+                    case "EVEN":
                     case "FAMS":
                     case "FAMC":
                     case "HIST":
+                    case "NCHI":
+                    case "NMR":
                     case "OBJE":
+                    case "PAGE":
+                    case "RIN":
+                    case "SOUR":
                         break;
 
                     default:
@@ -187,9 +231,11 @@ namespace GedcomParser.Services
         private void ParseFamily(GedcomChunk famChunk)
         {
             DatePlace marriage = null;
+            string relation = null;
+            string note = null;
+            DatePlace divorce = null;
             var parents = new List<Person>();
             var children = new List<Person>();
-            DatePlace divorce = null;
 
             foreach (var chunk in famChunk.SubChunks)
             {
@@ -215,8 +261,16 @@ namespace GedcomParser.Services
                         }
                         break;
 
+                    case "_REL":
+                        relation = chunk.Data;
+                        break;
+
                     case "MARR":
                         marriage = ParseDatePlace(chunk);
+                        break;
+
+                    case "NOTE":
+                        note = ParseNote(note, chunk);
                         break;
 
                     case "WIFE":
@@ -228,7 +282,20 @@ namespace GedcomParser.Services
                         break;
 
                     // Deliberately skipped as irrelevant for our usecase
+                    case "CHAN":
+                    case "DSCR":
+                    case "EVEN":
+                    case "FAMS":
+                    case "FAMC":
+                    case "HIST":
+                    case "MARS":
+                    case "NCHI":
+                    case "NMR":
+                    case "OBJE":
+                    case "PAGE":
+                    case "SOUR":
 
+                        break;
 
                     default:
                         throw new NotImplementedException($"ParseFamily: Type='{chunk.Type}' is not handled");
@@ -238,7 +305,15 @@ namespace GedcomParser.Services
             // Spouses
             if (parents.Count == 2)
             {
-                Relations.Add(new SpouseRelation { FamilyId = famChunk.Id, From = parents[0], To = parents[1], Marriage = marriage, Divorce = divorce });
+                Relations.Add(new SpouseRelation {
+                    FamilyId = famChunk.Id,
+                    From = parents[0],
+                    To = parents[1],
+                    Marriage = marriage,
+                    Divorce = divorce,
+                    Relation = relation,
+                    Note = note
+                });
             }
 
             // Parents / Children
@@ -262,13 +337,25 @@ namespace GedcomParser.Services
             }
         }
 
-        private static DatePlace ParseDatePlace(GedcomChunk chunk)
+        private DatePlace ParseDatePlace(GedcomChunk chunk)
         {
-            return new DatePlace
+            var datePlace = new DatePlace
             {
                 Date = chunk.SubChunks.SingleOrDefault(c => c.Type == "DATE")?.Data,
                 Place = chunk.SubChunks.SingleOrDefault(c => c.Type == "PLAC")?.Data
             };
+            var map = chunk.SubChunks.SingleOrDefault(c => c.Type == "MAP");
+            if (map != null)
+            {
+                datePlace.Latitude = map.SubChunks.SingleOrDefault(c => c.Type == "LATI")?.Data;
+                datePlace.Longitude = map.SubChunks.SingleOrDefault(c => c.Type == "LONG")?.Data;
+            }
+            var note = chunk.SubChunks.SingleOrDefault(c => c.Type == "NOTE");
+            if (note != null)
+            {
+                datePlace.Note = ParseNote(datePlace.Note, note);
+            }
+            return datePlace;
         }
 
         private static string ParseDateTime(GedcomChunk chunk)
@@ -335,7 +422,38 @@ namespace GedcomParser.Services
             return address;
         }
 
-        private string ParseNote(GedcomChunk incomingChunk)
+        private Adoption ParseAdoption(GedcomChunk adoptionChunk)
+        {
+            var adoption = new Adoption { DatePlace = ParseDatePlace(adoptionChunk) };
+
+            foreach (var chunk in adoptionChunk.SubChunks)
+            {
+                switch (chunk.Type)
+                {
+                    case "NOTE":
+                        adoption.Note = ParseNote(adoption.Note, chunk);
+                        break;
+
+                    case "TYPE":
+                        adoption.Type = chunk.Data;
+                        break;
+
+                    // Deliberately skipped as irrelevant for our usecase
+                    case "DATE":
+                    case "FAMC":
+                    case "PLAC":
+                    case "SOUR":
+                        break;
+
+                    default:
+                        throw new NotImplementedException($"ParseAdoption: Type='{chunk.Type}' is not handled");
+                }
+            }
+
+            return adoption;
+        }
+
+        private string ParseNote(string previousNote, GedcomChunk incomingChunk)
         {
             var noteChunk = incomingChunk;
             if (incomingChunk.Reference.IsSpecified())
@@ -346,9 +464,15 @@ namespace GedcomParser.Services
                     throw new Exception($"Unable to find Note with Id='{incomingChunk.Reference}'");
                 }
             }
+
             var sb = new StringBuilder();
             foreach (var chunk in noteChunk.SubChunks)
             {
+                if (UnwantedBlob(chunk))
+                {
+                    sb.AppendLine("(Skipped blob content)");
+                    break;
+                }
                 switch (chunk.Type)
                 {
                     case "CONC":
@@ -362,7 +486,14 @@ namespace GedcomParser.Services
                         throw new NotImplementedException($"ParseNote: Type='{noteChunk.Type}' is not handled");
                 }
             }
-            return sb.ToString();
+
+            return previousNote.IsSpecified() ? previousNote + Environment.NewLine + sb : sb.ToString();
+        }
+
+        private static bool UnwantedBlob(GedcomChunk chunk)
+        {
+            // TODO: We should make this check more intelligent :) 
+            return chunk.Data?.Contains("<span") ?? false;
         }
 
         /// <summary>

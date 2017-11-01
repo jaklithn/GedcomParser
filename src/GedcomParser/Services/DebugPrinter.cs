@@ -13,7 +13,7 @@ namespace GedcomParser.Services
             foreach (var chunk in chunks)
             {
                 Debug.WriteLine($"{new string(' ', chunk.Level * 2)}{chunk.Level} {chunk.Id} {chunk.Type} {chunk.Data}");
-                PrintChunks(chunk.SubChunks);
+                //PrintChunks(chunk.SubChunks);
             }
         }
 

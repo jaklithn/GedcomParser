@@ -28,6 +28,8 @@
     {
         public DatePlace Marriage { get; set; }
         public DatePlace Divorce { get; set; }
+        public string Relation { get; set; }
+        public string Note { get; set; }
 
         public SpouseRelation() : base("Spouse_To")
         {
