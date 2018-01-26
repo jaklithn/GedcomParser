@@ -480,16 +480,8 @@ namespace GedcomParser.Services
                     case "CONT":
                         sb.AppendLine(chunk.Data);
                         break;
-
-                    // Deliberately skipped as irrelevant for our usecase
-                    case "_PLC":
-                    case "DATE":
-                    case "PLAC":
-                    case "SOUR":
-                        break;
-
                     default:
-                        throw new NotImplementedException($"ParseNote: Type='{chunk.Type}' is not handled");
+                        throw new NotImplementedException($"ParseNote: Type='{noteChunk.Type}' is not handled");
                 }
             }
 
