@@ -1,22 +1,21 @@
 ﻿using System.Diagnostics;
 using System.IO;
+using System.Reflection.Metadata;
 using GedcomParser.Entities.Internal;
 using GedcomParser.Services;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
+using FluentAssertions;
 
 
 namespace GedcomParser.Test
 {
-    [TestClass]
     public class ImportTests
     {
-        [TestMethod]
+        [Fact]
         public void CanParse()
         {
             // Arrange
-            var currentDir = Directory.GetCurrentDirectory();
-            var baseDir = currentDir.Substring(0, currentDir.IndexOf(@"\bin\Debug"));
-            var filePath = Path.Combine(baseDir, "Resources", "StefanFamily.ged");
+            var filePath = Path.Combine(GetResourcePath(), "StefanFamily.ged");
             //var filePath = Path.Combine(baseDir, "Resources", "StefanFamilyAll.ged");
             //var filePath = Path.Combine(baseDir, "Resources", "Windsor.ged");
             //var filePath = Path.Combine(baseDir, "Resources", "Kennedy.ged");
@@ -28,8 +27,8 @@ namespace GedcomParser.Test
 
             // Assert
             var relationCount = fileParser.PersonContainer.ChildRelations.Count + fileParser.PersonContainer.SpouseRelations.Count + fileParser.PersonContainer.SiblingRelations.Count;
-            Assert.IsTrue(fileParser.PersonContainer.Persons.Count > 0);
-            Assert.IsTrue(relationCount > 0);
+            fileParser.PersonContainer.Persons.Count.Should().BeGreaterThan(0);
+            relationCount.Should().BeGreaterThan(0);
             //var childStatusChildren = fileParser.Relations.OfType<ChildRelation>().Where(c => !string.IsNullOrEmpty(c.Pedigree)).ToList();
             //Assert.IsTrue(childStatusChildren.Count > 0);
             Debug.WriteLine("======================================================================");
@@ -38,13 +37,11 @@ namespace GedcomParser.Test
             Debug.WriteLine("======================================================================");
         }
 
-        [TestMethod]
+        [Fact]
         public void CanCollectTypes()
         {
             // Arrange
-            var currentDir = Directory.GetCurrentDirectory();
-            var baseDir = currentDir.Substring(0, currentDir.IndexOf(@"\bin\Debug"));
-            var filePath = Path.Combine(baseDir, "Resources", "Windsor.ged");
+            var filePath = Path.Combine(GetResourcePath(), "Windsor.ged");
             var fileParser = new FileParser();
 
             // Act
@@ -52,13 +49,11 @@ namespace GedcomParser.Test
             DebugPrinter.PrintTypes(gedcomTopChunks);
         }
 
-        [TestMethod]
+        [Fact]
         public void CanPrintChunks()
         {
             // Arrange
-            var currentDir = Directory.GetCurrentDirectory();
-            var baseDir = currentDir.Substring(0, currentDir.IndexOf(@"\bin\Debug"));
-            var filePath = Path.Combine(baseDir, "Resources", "Windsor.ged");
+            var filePath = Path.Combine(GetResourcePath(), "Windsor.ged");
             var fileParser = new FileParser();
 
             // Act
@@ -66,7 +61,7 @@ namespace GedcomParser.Test
             DebugPrinter.PrintChunks(gedcomTopChunks);
         }
 
-        [TestMethod]
+        [Fact]
         public void CanParseLine()
         {
             // Arrange
@@ -76,12 +71,12 @@ namespace GedcomParser.Test
             var gedcomLine = GedcomLine.Parse(line);
 
             // Assert
-            Assert.AreEqual(3, gedcomLine.Level);
-            Assert.AreEqual("ADDR", gedcomLine.Type);
-            Assert.AreEqual("7108 South Pine Cone Street", gedcomLine.Data);
+            gedcomLine.Level.Should().Be(3);
+            gedcomLine.Type.Should().Be("ADDR");
+            gedcomLine.Data.Should().Be("7108 South Pine Cone Street");
         }
 
-        [TestMethod]
+        [Fact]
         public void CanParseShortLine()
         {
             // Arrange
@@ -91,9 +86,18 @@ namespace GedcomParser.Test
             var gedcomLine = GedcomLine.Parse(line);
 
             // Assert
-            Assert.AreEqual(3, gedcomLine.Level);
-            Assert.AreEqual("ADDR", gedcomLine.Type);
-            Assert.AreEqual(null, gedcomLine.Data);
+            gedcomLine.Level.Should().Be(3);
+            gedcomLine.Type.Should().Be("ADDR");
+            gedcomLine.Data.Should().BeNull();
         }
+        
+        private static string GetResourcePath()
+        {
+            var sep = Path.DirectorySeparatorChar;
+            var currentDir = Directory.GetCurrentDirectory();
+            var baseDir = currentDir.Substring(0, currentDir.IndexOf($"{sep}bin{sep}Debug"));
+            return Path.Combine(baseDir, "Resources");
+        }
+
     }
 }

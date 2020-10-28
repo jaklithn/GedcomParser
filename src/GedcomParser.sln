@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GedcomParser", "GedcomParser\GedcomParser.csproj", "{9AD53D1A-3D91-44BC-903B-54D370E7A201}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GedcomParser", "GedcomParser\GedcomParser.csproj", "{16122204-42F9-4DDE-BF18-F85262ECD7AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GedcomParser.Test", "GedcomParser.Test\GedcomParser.Test.csproj", "{89B09FF1-5905-4CB1-8AFD-BE90221DCADB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GedcomParser.Test", "GedcomParser.Test\GedcomParser.Test.csproj", "{FB1B2BE9-36B5-4651-BB38-EA02F99F2E29}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,14 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{9AD53D1A-3D91-44BC-903B-54D370E7A201}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9AD53D1A-3D91-44BC-903B-54D370E7A201}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9AD53D1A-3D91-44BC-903B-54D370E7A201}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9AD53D1A-3D91-44BC-903B-54D370E7A201}.Release|Any CPU.Build.0 = Release|Any CPU
-		{89B09FF1-5905-4CB1-8AFD-BE90221DCADB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{89B09FF1-5905-4CB1-8AFD-BE90221DCADB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{89B09FF1-5905-4CB1-8AFD-BE90221DCADB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{89B09FF1-5905-4CB1-8AFD-BE90221DCADB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16122204-42F9-4DDE-BF18-F85262ECD7AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16122204-42F9-4DDE-BF18-F85262ECD7AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16122204-42F9-4DDE-BF18-F85262ECD7AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16122204-42F9-4DDE-BF18-F85262ECD7AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB1B2BE9-36B5-4651-BB38-EA02F99F2E29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB1B2BE9-36B5-4651-BB38-EA02F99F2E29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB1B2BE9-36B5-4651-BB38-EA02F99F2E29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB1B2BE9-36B5-4651-BB38-EA02F99F2E29}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

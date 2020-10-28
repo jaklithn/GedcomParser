@@ -11,6 +11,7 @@ namespace GedcomParser.Test.Services
     {
         public static void SaveToZipFile(object obj, string zipFilePath, string jsonFileName)
         {
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
             var settings = new JsonSerializerSettings { Formatting = Formatting.Indented, NullValueHandling = NullValueHandling.Ignore };
             var json = JsonConvert.SerializeObject(obj, settings);
             using (var zipStorer = Create(zipFilePath, string.Empty))

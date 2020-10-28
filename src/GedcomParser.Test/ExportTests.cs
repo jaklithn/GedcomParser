@@ -2,15 +2,15 @@
 using GedcomParser.Entities;
 using GedcomParser.Services;
 using GedcomParser.Test.Services;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
+using FluentAssertions;
 
 
 namespace GedcomParser.Test
 {
-    [TestClass]
     public class ExportTests
     {
-        [TestMethod]
+        [Fact]
         public void CanExport()
         {
             // Arrange
@@ -19,22 +19,29 @@ namespace GedcomParser.Test
             const string gedcomFileName = "StefanFamily.ged";
             const string zipFileName = "PersonContainer.zip";
             const string jsonFileName = "Persons.json";
-            var currentDir = Directory.GetCurrentDirectory();
-            var baseDir = currentDir.Substring(0, currentDir.IndexOf(@"\bin\Debug"));
-            var gedFilePath = Path.Combine(baseDir, "Resources", gedcomFileName);
+            var gedFilePath = Path.Combine(GetResourcePath(), gedcomFileName);
             var fileParser = new FileParser();
             fileParser.Parse(gedFilePath);
 
             // Act
-            var zipFilePath = Path.Combine(currentDir, zipFileName);
+            var zipFilePath = Path.Combine(GetResourcePath(), zipFileName);
             ZipHandler.SaveToZipFile(fileParser.PersonContainer, zipFilePath, jsonFileName);
 
             // Assert
             var personContainer = ZipHandler.ParseFromZipFile<PersonContainer>(zipFilePath, jsonFileName);
-            Assert.AreEqual(fileParser.PersonContainer.Persons.Count, personContainer.Persons.Count);
-            Assert.AreEqual(fileParser.PersonContainer.ChildRelations.Count, personContainer.ChildRelations.Count);
-            Assert.AreEqual(fileParser.PersonContainer.SpouseRelations.Count, personContainer.SpouseRelations.Count);
-            Assert.AreEqual(fileParser.PersonContainer.SiblingRelations.Count, personContainer.SiblingRelations.Count);
+            personContainer.Persons.Count.Should().Be(fileParser.PersonContainer.Persons.Count);
+            personContainer.ChildRelations.Count.Should().Be(fileParser.PersonContainer.ChildRelations.Count);
+            personContainer.SpouseRelations.Count.Should().Be(fileParser.PersonContainer.SpouseRelations.Count);
+            personContainer.SiblingRelations.Count.Should().Be(fileParser.PersonContainer.SiblingRelations.Count);
         }
+        
+        private static string GetResourcePath()
+        {
+            var sep = Path.DirectorySeparatorChar;
+            var currentDir = Directory.GetCurrentDirectory();
+            var baseDir = currentDir.Substring(0, currentDir.IndexOf($"{sep}bin{sep}Debug"));
+            return Path.Combine(baseDir, "Resources");
+        }
+
     }
 }
