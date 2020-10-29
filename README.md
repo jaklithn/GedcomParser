@@ -1,10 +1,11 @@
 # Gedcom Parser
-This is a utility to parse GEDCOM 5.5.1 files. It is intended to be very simple to use and still true to the format.
+This is a utility to parse GEDCOM 5.5.5 files. It is intended to be very simple to use and still true to the format.
 
 ## GEDCOM
 GEDCOM is a file format to hold Genealogy data. It was first created 1984 and is widely adopted by genealogists worldwide. It is a flat file format that looks simple but is surprisingly complex. The structure is easy to read but the complexity is caused by all tags that can be combined in many ways and tries to cover all possible genealogy needs. Typically different users and different software just uses a selected subset of the available variations.
 There have been several attempts to redesign the file format to cover new needs like flexible event handling and varied family forms. But this format is widely adopted and so far has continued to be the de facto standard.
-Further information can be found here: [https://en.wikipedia.org/wiki/GEDCOM](https://en.wikipedia.org/wiki/GEDCOM)
+The formal specification can be found here: [https://www.gedcom.org/](https://www.gedcom.org/)
+General background can be found here: [https://en.wikipedia.org/wiki/GEDCOM](https://en.wikipedia.org/wiki/GEDCOM)
 
 ## Comparison
 I know there are already several projects with the same intention :)

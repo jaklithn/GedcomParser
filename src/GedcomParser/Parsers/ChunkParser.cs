@@ -34,15 +34,14 @@ namespace GedcomParser.Parsers
                         break;
 
                     // Deliberately skipped for now
+                    case "HEAD":
+                    case "TRLR":
+                        break;
+
                     case "_GRP":
                     case "_PLC":
                     case "CSTA":
                     case "GEDC":
-                    case "HEAD":
-                    case "TRLR":
-                        resultContainer.Warnings.Add($"Skipped top level Type='{chunk.Type}");
-                        break;
-
                     default:
                         resultContainer.Errors.Add($"Failed to handle top level Type='{chunk.Type}");
                         break;

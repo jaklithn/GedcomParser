@@ -1,5 +1,6 @@
 ﻿using System;
 using GedcomParser.Services;
+using GedcomParser.Test.Extensions;
 using GedcomParser.Test.Services;
 using Shouldly;
 using Xunit;
@@ -19,8 +20,8 @@ namespace GedcomParser.Test
             var result = FileParser.ParseLines(lines);
 
             // Assert
-            string.Join(Environment.NewLine, result.Errors).ShouldBeEmpty();
-            string.Join(Environment.NewLine, result.Warnings).ShouldBeEmpty();
+            result.Errors.ShouldBeEmptyWithFeedback();
+            result.Warnings.ShouldBeEmptyWithFeedback();
         }
 
         [Fact]
@@ -33,8 +34,8 @@ namespace GedcomParser.Test
             var result = FileParser.ParseLines(lines);
 
             // Assert
-            string.Join(Environment.NewLine, result.Errors).ShouldBeEmpty();
-            string.Join(Environment.NewLine, result.Warnings).ShouldBeEmpty();
+            result.Errors.ShouldBeEmptyWithFeedback();
+            result.Warnings.ShouldBeEmptyWithFeedback();
         }
 
         [Fact]
@@ -47,8 +48,8 @@ namespace GedcomParser.Test
             var result = FileParser.ParseLines(lines);
 
             // Assert
-            string.Join(Environment.NewLine, result.Errors).ShouldBeEmpty();
-            string.Join(Environment.NewLine, result.Warnings).ShouldBeEmpty();
+            result.Errors.ShouldBeEmptyWithFeedback();
+            result.Warnings.ShouldBeEmptyWithFeedback();
         }
     }
 }

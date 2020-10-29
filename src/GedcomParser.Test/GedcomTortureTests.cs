@@ -1,14 +1,13 @@
-﻿using System;
-using GedcomParser.Services;
+﻿using GedcomParser.Services;
+using GedcomParser.Test.Extensions;
 using GedcomParser.Test.Services;
-using Shouldly;
 using Xunit;
 
 
 namespace GedcomParser.Test
 {
     /// <summary>
-    /// 
+    /// Parsing test files found on <see href="http://www.geditcom.com/gedcom.html">Geditcom</see>
     /// </summary>
     public class GedcomTortureTests
     {
@@ -22,7 +21,8 @@ namespace GedcomParser.Test
             var result = FileParser.ParseLines(lines);
 
             // Assert
-            string.Join(Environment.NewLine, result.Errors).ShouldBeEmpty();
+            result.Errors.ShouldBeEmptyWithFeedback();
+            result.Warnings.ShouldBeEmptyWithFeedback();
         }
 
         [Fact]
@@ -35,7 +35,8 @@ namespace GedcomParser.Test
             var result = FileParser.ParseLines(lines);
 
             // Assert
-            string.Join(Environment.NewLine, result.Errors).ShouldBeEmpty();
+            result.Errors.ShouldBeEmptyWithFeedback();
+            result.Warnings.ShouldBeEmptyWithFeedback();
         }
 
         [Fact]
@@ -48,7 +49,8 @@ namespace GedcomParser.Test
             var result = FileParser.ParseLines(lines);
 
             // Assert
-            string.Join(Environment.NewLine, result.Errors).ShouldBeEmpty();
+            result.Errors.ShouldBeEmptyWithFeedback();
+            result.Warnings.ShouldBeEmptyWithFeedback();
         }
 
         [Fact]
@@ -61,7 +63,8 @@ namespace GedcomParser.Test
             var result = FileParser.ParseLines(lines);
 
             // Assert
-            string.Join(Environment.NewLine, result.Errors).ShouldBeEmpty();
+            result.Errors.ShouldBeEmptyWithFeedback();
+            result.Warnings.ShouldBeEmptyWithFeedback();
         }
     }
 }

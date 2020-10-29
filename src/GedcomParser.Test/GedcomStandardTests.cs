@@ -1,14 +1,15 @@
 ﻿using System;
+using GedcomParser.Entities;
 using GedcomParser.Services;
+using GedcomParser.Test.Extensions;
 using GedcomParser.Test.Services;
-using Shouldly;
 using Xunit;
 
 
 namespace GedcomParser.Test
 {
     /// <summary>
-    /// 
+    /// Parsing test files provided by <see href="https://www.gedcom.org/samples.html">Gedcom organisation</see>
     /// </summary>
     public class GedcomStandardTests
     {
@@ -22,8 +23,8 @@ namespace GedcomParser.Test
             var result = FileParser.ParseLines(lines);
 
             // Assert
-            string.Join(Environment.NewLine, result.Errors).ShouldBeEmpty();
-            string.Join(Environment.NewLine, result.Warnings).ShouldBeEmpty();
+            result.Errors.ShouldBeEmptyWithFeedback();
+            result.Warnings.ShouldBeEmptyWithFeedback();
         }
 
         [Fact]
@@ -36,8 +37,8 @@ namespace GedcomParser.Test
             var result = FileParser.ParseLines(lines);
 
             // Assert
-            string.Join(Environment.NewLine, result.Errors).ShouldBeEmpty();
-            string.Join(Environment.NewLine, result.Warnings).ShouldBeEmpty();
+            result.Errors.ShouldBeEmptyWithFeedback();
+            result.Warnings.ShouldBeEmptyWithFeedback();
         }
 
         [Fact]
@@ -50,8 +51,8 @@ namespace GedcomParser.Test
             var result = FileParser.ParseLines(lines);
 
             // Assert
-            string.Join(Environment.NewLine, result.Errors).ShouldBeEmpty();
-            string.Join(Environment.NewLine, result.Warnings).ShouldBeEmpty();
+            result.Errors.ShouldBeEmptyWithFeedback();
+            result.Warnings.ShouldBeEmptyWithFeedback();
         }
 
         [Fact]
@@ -64,8 +65,8 @@ namespace GedcomParser.Test
             var result = FileParser.ParseLines(lines);
 
             // Assert
-            string.Join(Environment.NewLine, result.Errors).ShouldBeEmpty();
-            string.Join(Environment.NewLine, result.Warnings).ShouldBeEmpty();
+            result.Errors.ShouldBeEmptyWithFeedback();
+            result.Warnings.ShouldBeEmptyWithFeedback();
         }
 
         [Fact]
@@ -78,8 +79,8 @@ namespace GedcomParser.Test
             var result = FileParser.ParseLines(lines);
 
             // Assert
-            string.Join(Environment.NewLine, result.Errors).ShouldBeEmpty();
-            string.Join(Environment.NewLine, result.Warnings).ShouldBeEmpty();
+            result.Errors.ShouldBeEmptyWithFeedback();
+            result.Warnings.ShouldBeEmptyWithFeedback();
         }
 
         [Fact]
@@ -92,8 +93,8 @@ namespace GedcomParser.Test
             var result = FileParser.ParseLines(lines);
 
             // Assert
-            string.Join(Environment.NewLine, result.Errors).ShouldBeEmpty();
-            string.Join(Environment.NewLine, result.Warnings).ShouldBeEmpty();
+            result.Errors.ShouldBeEmptyWithFeedback();
+            result.Warnings.ShouldBeEmptyWithFeedback();
         }
 
     }
