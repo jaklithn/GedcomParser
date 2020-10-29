@@ -1,0 +1,113 @@
+======================================================================
+  ALL types detected in the file : 'GedcomStandard.555SAMPLE.GED'
+======================================================================
+ABBR
+ADDR
+    ADR1
+    CITY
+    CTRY
+    POST
+    STAE
+ADOP
+    DATE+
+ADR1
+AGNC
+BIRT
+    DATE+
+    PLAC
+    SOUR+
+BURI
+    PLAC
+CALN
+CHAR
+CHIL
+CITY
+CORP
+    ADDR+
+    WWW
+CTRY
+DATA
+    AGNC
+    EVEN+
+DATE
+    TIME
+DEAT
+    DATE+
+    PLAC
+EVEN
+    DATE+
+    PLAC
+FAM
+    CHIL
+    HUSB
+    MARR+
+    WIFE
+FAMC
+    PEDI
+FAMS
+FILE
+FORM
+    VERS
+GEDC
+    FORM+
+    VERS
+GIVN
+HEAD
+    CHAR
+    DATE+
+    FILE
+    GEDC+
+    LANG
+    SOUR+
+    SUBM+
+HUSB
+INDI
+    ADOP+
+    BIRT+
+    BURI+
+    DEAT+
+    FAMC+
+    FAMS
+    NAME+
+    RESI+
+    SEX
+LANG
+MARR
+    DATE+
+    PLAC
+NAME
+    GIVN
+    SURN
+PAGE
+PEDI
+PHON
+PLAC
+POST
+REPO
+    ADDR+
+    CALN
+    NAME+
+RESI
+    DATE+
+SEX
+SOUR
+    ABBR
+    CORP+
+    DATA+
+    NAME+
+    PAGE
+    REPO+
+    TITL
+    VERS
+STAE
+SUBM
+    ADDR+
+    NAME+
+    PHON
+SURN
+TIME
+TITL
+TRLR
+VERS
+WIFE
+WWW

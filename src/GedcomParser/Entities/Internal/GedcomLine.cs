@@ -1,5 +1,5 @@
 ﻿using System;
-using GedcomParser.Extenders;
+using GedcomParser.Extensions;
 
 
 namespace GedcomParser.Entities.Internal

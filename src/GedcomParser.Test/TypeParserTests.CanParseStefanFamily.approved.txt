@@ -1,0 +1,257 @@
+======================================================================
+  ALL types detected in the file : 'CustomSample.Stefan.ged'
+======================================================================
+_FREL
+_GRP
+    NAME+
+    NOTE+
+_MREL
+_PLC
+    _PLP
+    ABBR+
+    FORM
+    NAME+
+    NOTE+
+    RIN
+    TYPE
+_PLP
+_PRIM
+_PRNT
+_REL
+_SIZE
+_UID
+ABBR
+    CONC
+ADDR
+    CONT
+AUTH
+BAPM
+    _PLC+
+    DATE+
+    NOTE+
+    PLAC+
+BIRT
+    _PLC+
+    DATE+
+    NOTE+
+    OBJE+
+    PLAC+
+    SOUR+
+BURI
+    _PLC+
+    DATE+
+    NOTE+
+    PLAC+
+    SOUR+
+CAUS
+CHAN
+    DATE+
+CHAR
+CHIL
+    _FREL
+    _MREL
+CHR
+    _PLC+
+    DATE+
+    NOTE+
+    OBJE+
+    PLAC+
+    SOUR+
+CONC
+CONF
+    NOTE+
+    PLAC+
+CONT
+CORP
+DATA
+    DATE+
+    TEXT+
+DATE
+    TIME
+DEAT
+    _PLC+
+    CAUS
+    DATE+
+    NOTE+
+    OBJE+
+    PLAC+
+    SOUR+
+DEST
+DIV
+    _PLC+
+    DATE+
+    NOTE+
+    PLAC+
+    SOUR+
+DSCR
+    _PLC+
+    DATE+
+    PLAC+
+    SOUR+
+EDUC
+    DATE+
+    PLAC+
+EMAIL
+EMIG
+    _PLC+
+    DATE+
+    NOTE+
+    PLAC+
+    SOUR+
+EVEN
+    _PLC+
+    DATE+
+    NOTE+
+    OBJE+
+    PLAC+
+    SOUR+
+    TYPE
+FACT
+    _PLC+
+    DATE+
+    PLAC+
+    SOUR+
+FAM
+    _REL
+    CHAN+
+    CHIL+
+    DIV+
+    EVEN+
+    HUSB
+    MARR+
+    NOTE+
+    SOUR+
+    WIFE
+FAMC
+FAMS
+FILE
+FORM
+GEDC
+    FORM
+    VERS
+GIVN
+HEAD
+    CHAR
+    DATE+
+    DEST
+    FILE
+    GEDC+
+    LANG
+    SOUR+
+    SUBM+
+HUSB
+IMMI
+    _PLC+
+    DATE+
+    NOTE+
+    PLAC+
+    SOUR+
+INDI
+    _GRP+
+    _UID
+    BAPM+
+    BIRT+
+    BURI+
+    CHAN+
+    CHR+
+    CONF+
+    DEAT+
+    DSCR+
+    EDUC+
+    EMIG+
+    EVEN+
+    FACT+
+    FAMC
+    FAMS
+    IMMI+
+    NAME+
+    NCHI
+    NMR
+    NOTE+
+    OBJE+
+    OCCU+
+    RESI+
+    RIN
+    SEX
+    SOUR+
+LANG
+LATI
+LONG
+MAP
+    LATI
+    LONG
+MARR
+    _PLC+
+    DATE+
+    NOTE+
+    PLAC+
+    SOUR+
+NAME
+    GIVN
+    NICK
+    SOUR+
+    SURN
+NCHI
+NICK
+NMR
+NOTE
+    CONC
+    CONT
+OBJE
+    _PRIM
+    _PRNT
+    _SIZE
+    FILE
+    FORM
+    TITL
+OCCU
+    _PLC+
+    DATE+
+    PLAC+
+    SOUR+
+PAGE
+PHON
+PLAC
+    MAP+
+PUBL
+QUAY
+REPO
+RESI
+    _PLC+
+    ADDR+
+    DATE+
+    NOTE+
+    OBJE+
+    PLAC+
+    SOUR+
+    TYPE
+RIN
+SEX
+SOUR
+    ABBR+
+    AUTH
+    CORP
+    DATA+
+    NOTE+
+    PAGE
+    PUBL
+    QUAY
+    REPO
+    TEXT+
+    TITL
+    VERS
+SUBM
+    ADDR+
+    EMAIL
+    NAME+
+    PHON
+SURN
+TEXT
+    CONC
+    CONT
+TIME
+TITL
+TRLR
+TYPE
+VERS
+WIFE

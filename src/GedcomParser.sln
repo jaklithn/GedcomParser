@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2010
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30611.23
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GedcomParser", "GedcomParser\GedcomParser.csproj", "{9AD53D1A-3D91-44BC-903B-54D370E7A201}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GedcomParser", "GedcomParser\GedcomParser.csproj", "{24DE431A-FA7D-4139-A2B2-F277E178968E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GedcomParser.Test", "GedcomParser.Test\GedcomParser.Test.csproj", "{89B09FF1-5905-4CB1-8AFD-BE90221DCADB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GedcomParser.Test", "GedcomParser.Test\GedcomParser.Test.csproj", "{22D66E2E-E5F2-4F65-8399-6671279E3324}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,14 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{9AD53D1A-3D91-44BC-903B-54D370E7A201}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9AD53D1A-3D91-44BC-903B-54D370E7A201}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9AD53D1A-3D91-44BC-903B-54D370E7A201}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9AD53D1A-3D91-44BC-903B-54D370E7A201}.Release|Any CPU.Build.0 = Release|Any CPU
-		{89B09FF1-5905-4CB1-8AFD-BE90221DCADB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{89B09FF1-5905-4CB1-8AFD-BE90221DCADB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{89B09FF1-5905-4CB1-8AFD-BE90221DCADB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{89B09FF1-5905-4CB1-8AFD-BE90221DCADB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24DE431A-FA7D-4139-A2B2-F277E178968E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24DE431A-FA7D-4139-A2B2-F277E178968E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24DE431A-FA7D-4139-A2B2-F277E178968E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24DE431A-FA7D-4139-A2B2-F277E178968E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22D66E2E-E5F2-4F65-8399-6671279E3324}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22D66E2E-E5F2-4F65-8399-6671279E3324}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22D66E2E-E5F2-4F65-8399-6671279E3324}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22D66E2E-E5F2-4F65-8399-6671279E3324}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

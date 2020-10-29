@@ -4,7 +4,7 @@
 namespace GedcomParser.Entities.Internal
 {
     /// <summary>
-    /// This represents a line from the GEDCOM file AND all its related sublines in a structured hierarchy.
+    /// This represents a line from the GEDCOM file AND all its related sub lines in a structured hierarchy.
     /// </summary>
     internal class GedcomChunk : GedcomLine
     {

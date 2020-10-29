@@ -1,0 +1,621 @@
+======================================================================
+  ALL types detected in the file : 'GedcomTorture.TGC551.ged'
+======================================================================
+_HME
+ABBR
+ADDR
+    ADR1
+    ADR2
+    CITY
+    CONT
+    CTRY
+    POST
+    STAE
+ADOP
+    DATE+
+    FAMC+
+    NOTE+
+    PLAC+
+    SOUR+
+    TYPE
+ADR1
+ADR2
+AFN
+AGE
+AGNC
+ALIA
+ANCE
+ANCI
+ANUL
+    DATE+
+ASSO
+    NOTE+
+    RELA
+    SOUR+
+AUTH
+    CONC
+    CONT
+BAPL
+    DATE+
+    NOTE+
+    PLAC+
+    SOUR+
+    STAT
+    TEMP
+BAPM
+    ADDR+
+    AGE
+    AGNC
+    CAUS
+    DATE+
+    NOTE+
+    OBJE+
+    PLAC+
+    SOUR+
+    TYPE
+BARM
+    DATE+
+    NOTE+
+    PLAC+
+    SOUR+
+    TYPE
+BASM
+    DATE+
+    NOTE+
+    PLAC+
+    SOUR+
+    TYPE
+BIRT
+    ADDR+
+    AGNC
+    DATE+
+    FAMC+
+    NOTE+
+    OBJE+
+    PLAC+
+    SOUR+
+    TYPE
+BLES
+    DATE+
+    NOTE+
+    PLAC+
+    SOUR+
+    TYPE
+BLOB
+    CONT
+BURI
+    DATE+
+    NOTE+
+    PLAC+
+    SOUR+
+    TYPE
+CALN
+    MEDI
+CAST
+    DATE+
+    NOTE+
+    PLAC+
+    SOUR+
+    TYPE
+CAUS
+CENS
+    DATE+
+    HUSB+
+    NOTE+
+    PLAC+
+    SOUR+
+    TYPE
+    WIFE+
+CHAN
+    DATE+
+    NOTE+
+CHAR
+    VERS
+CHIL
+CHR
+    DATE+
+    FAMC+
+    NOTE+
+    PLAC+
+    SOUR+
+    TYPE
+CHRA
+    DATE+
+    NOTE+
+    PLAC+
+    SOUR+
+    TYPE
+CITY
+CONC
+CONF
+    DATE+
+    NOTE+
+    PLAC+
+    SOUR+
+    TYPE
+CONL
+CONT
+COPR
+CORP
+    ADDR+
+    PHON
+CREM
+CTRY
+DATA
+    AGNC
+    COPR
+    DATE+
+    EVEN+
+    NOTE+
+    TEXT+
+DATE
+    TIME
+DEAT
+    ADDR+
+    AGE
+    AGNC
+    CAUS
+    DATE+
+    NOTE+
+    OBJE+
+    PLAC+
+    SOUR+
+    TYPE
+DESC
+DESI
+DEST
+DIV
+    DATE+
+    HUSB+
+    NOTE+
+    PLAC+
+    SOUR+
+    TYPE
+    WIFE+
+DIVF
+    DATE+
+    HUSB+
+    NOTE+
+    PLAC+
+    SOUR+
+    WIFE+
+DSCR
+    DATE+
+    NOTE+
+    PLAC+
+    SOUR+
+    TYPE
+EDUC
+    DATE+
+    NOTE+
+    PLAC+
+    SOUR+
+    TYPE
+EMIG
+    DATE+
+    NOTE+
+    PLAC+
+    SOUR+
+    TYPE
+ENDL
+    DATE+
+ENGA
+    ADDR+
+    AGE
+    AGNC
+    CAUS
+    DATE+
+    HUSB+
+    NOTE+
+    OBJE+
+    PLAC+
+    SOUR+
+    TYPE
+    WIFE+
+EVEN
+    DATE+
+    HUSB+
+    NOTE+
+    PLAC+
+    ROLE
+    SOUR+
+    TYPE
+    WIFE+
+FAM
+    ANUL+
+    CENS+
+    CHAN+
+    CHIL
+    DIV+
+    DIVF+
+    ENGA+
+    EVEN+
+    HUSB+
+    MARB+
+    MARC+
+    MARL+
+    MARR+
+    MARS+
+    NCHI+
+    NOTE+
+    OBJE+
+    REFN+
+    RIN
+    SLGS+
+    SOUR+
+    SUBM+
+    WIFE+
+FAMC
+    ADOP+
+    NOTE+
+    PEDI
+FAMF
+FAMS
+    NOTE+
+FCOM
+    DATE+
+    NOTE+
+    PLAC+
+    SOUR+
+    TYPE
+FILE
+FORM
+GEDC
+    FORM
+    VERS
+GIVN
+GRAD
+    DATE+
+    NOTE+
+    PLAC+
+    SOUR+
+    TYPE
+HEAD
+    _HME
+    CHAR+
+    COPR
+    DATE+
+    DEST
+    FILE
+    GEDC+
+    LANG
+    NOTE+
+    PLAC+
+    SOUR+
+    SUBM+
+    SUBN+
+HUSB
+    AGE
+IDNO
+    DATE+
+    NOTE+
+    PLAC+
+    SOUR+
+    TYPE
+IMMI
+    DATE+
+    NOTE+
+    PLAC+
+    SOUR+
+    TYPE
+INDI
+    ADOP+
+    AFN
+    ALIA
+    ANCI
+    ASSO+
+    BAPL+
+    BAPM+
+    BARM+
+    BASM+
+    BIRT+
+    BLES+
+    BURI+
+    CAST+
+    CENS+
+    CHAN+
+    CHR+
+    CHRA+
+    CONF+
+    CONL
+    CREM
+    DEAT+
+    DESI
+    DSCR+
+    EDUC+
+    EMIG+
+    ENDL+
+    EVEN+
+    FAMC+
+    FAMS+
+    FCOM+
+    GRAD+
+    IDNO+
+    IMMI+
+    NAME+
+    NATI+
+    NATU+
+    NCHI+
+    NMR+
+    NOTE+
+    OBJE+
+    OCCU+
+    ORDN+
+    PROB+
+    PROP+
+    REFN+
+    RELI+
+    RESI+
+    RESN
+    RETI+
+    RFN
+    RIN
+    SEX
+    SLGC+
+    SOUR+
+    SSN+
+    SUBM+
+    TITL+
+    WILL+
+LANG
+MARB
+    DATE+
+    HUSB+
+    NOTE+
+    PLAC+
+    SOUR+
+    TYPE
+    WIFE+
+MARC
+    DATE+
+    HUSB+
+    NOTE+
+    PLAC+
+    SOUR+
+    TYPE
+    WIFE+
+MARL
+    DATE+
+    HUSB+
+    NOTE+
+    PLAC+
+    SOUR+
+    TYPE
+    WIFE+
+MARR
+    ADDR+
+    AGNC
+    CAUS
+    DATE+
+    HUSB+
+    NOTE+
+    OBJE+
+    PLAC+
+    SOUR+
+    TYPE
+    WIFE+
+MARS
+    DATE+
+    HUSB+
+    NOTE+
+    PLAC+
+    SOUR+
+    TYPE
+    WIFE+
+MEDI
+NAME
+    GIVN
+    NICK
+    NOTE+
+    NPFX
+    NSFX
+    SOUR+
+    SPFX
+    SURN
+NATI
+    DATE+
+    NOTE+
+    PLAC+
+    SOUR+
+    TYPE
+NATU
+    DATE+
+    NOTE+
+    PLAC+
+    SOUR+
+    TYPE
+NCHI
+    DATE+
+    NOTE+
+    PLAC+
+    SOUR+
+    TYPE
+NICK
+NMR
+    DATE+
+    NOTE+
+    PLAC+
+    SOUR+
+    TYPE
+NOTE
+    CHAN+
+    CONC
+    CONT
+    REFN+
+    RIN
+    SOUR+
+NPFX
+NSFX
+OBJE
+    BLOB+
+    CHAN+
+    FILE
+    FORM
+    NOTE+
+    REFN+
+    RIN
+    TITL+
+OCCU
+    ADDR+
+    AGE
+    AGNC
+    CAUS
+    DATE+
+    NOTE+
+    OBJE+
+    PLAC+
+    SOUR+
+    TYPE
+ORDI
+ORDN
+    DATE+
+    NOTE+
+    PLAC+
+    SOUR+
+    TYPE
+PAGE
+PEDI
+PHON
+PLAC
+    FORM
+    NOTE+
+    SOUR+
+POST
+PROB
+    DATE+
+    NOTE+
+    PLAC+
+    SOUR+
+    TYPE
+PROP
+    DATE+
+    NOTE+
+    PLAC+
+    SOUR+
+    TYPE
+PUBL
+    CONC
+    CONT
+QUAY
+REFN
+    TYPE
+RELA
+RELI
+    DATE+
+    NOTE+
+    PLAC+
+    SOUR+
+    TYPE
+REPO
+    ADDR+
+    CALN+
+    CHAN+
+    NAME+
+    NOTE+
+    PHON
+    REFN+
+    RIN
+RESI
+    ADDR+
+    AGE
+    AGNC
+    CAUS
+    DATE+
+    NOTE+
+    PHON
+    PLAC+
+    SOUR+
+    TYPE
+RESN
+RETI
+    DATE+
+    NOTE+
+    PLAC+
+    SOUR+
+    TYPE
+RFN
+RIN
+ROLE
+SEX
+SLGC
+    DATE+
+    FAMC+
+SLGS
+    DATE+
+    NOTE+
+    PLAC+
+    SOUR+
+    STAT
+    TEMP
+SOUR
+    ABBR
+    AUTH+
+    CHAN+
+    CONC
+    CONT
+    CORP+
+    DATA+
+    EVEN+
+    NAME+
+    NOTE+
+    OBJE+
+    PAGE
+    PUBL+
+    QUAY
+    REFN+
+    REPO+
+    RIN
+    TEXT+
+    TITL+
+    VERS
+SPFX
+SSN
+    DATE+
+    NOTE+
+    PLAC+
+    SOUR+
+    TYPE
+STAE
+STAT
+SUBM
+    ADDR+
+    CHAN+
+    LANG
+    NAME+
+    OBJE+
+    PHON
+    RFN
+    RIN
+SUBN
+    ANCE
+    DESC
+    FAMF
+    ORDI
+    RIN
+    SUBM+
+    TEMP
+SURN
+TEMP
+TEXT
+    CONC
+    CONT
+TIME
+TITL
+    CONC
+    CONT
+    DATE+
+    NOTE+
+    PLAC+
+    SOUR+
+    TYPE
+TRLR
+TYPE
+VERS
+WIFE
+    AGE
+WILL
+    DATE+
+    NOTE+
+    PLAC+
+    SOUR+
+    TYPE

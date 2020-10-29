@@ -1,0 +1,84 @@
+======================================================================
+  ALL types detected in the file : 'CustomSample.Kennedy.ged'
+======================================================================
+BIRT
+    DATE
+    PLAC
+BURI
+    DATE
+    PLAC
+CHAN
+    DATE
+CHAR
+CHIL
+CHR
+    DATE
+    PLAC
+CONT
+CORP
+CSTA
+    NAME
+DATE
+DEAT
+    DATE
+    PLAC
+DEST
+DIV
+    DATE
+EDUC
+FAM
+    CHIL
+    DIV+
+    HUSB
+    MARR+
+    WIFE
+FAMC
+FAMS
+FILE
+GEDC
+    VERS
+HEAD
+    CHAR
+    DATE
+    DEST
+    FILE
+    GEDC+
+    SOUR+
+HEAL
+HIST
+HUSB
+INDI
+    BIRT+
+    BURI+
+    CHAN+
+    CHR+
+    DEAT+
+    EDUC
+    FAMC
+    FAMS
+    HEAL
+    HIST
+    NAME
+    NOTE+
+    OCCU
+    RELI
+    SEX
+    TITL
+MARR
+    DATE
+    PLAC
+NAME
+NOTE
+    CONT
+OCCU
+PLAC
+RELI
+SEX
+SOUR
+    CORP
+    NAME
+    VERS
+TITL
+TRLR
+VERS
+WIFE

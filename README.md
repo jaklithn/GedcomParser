@@ -17,14 +17,14 @@ The intention of this project is just to parse the GEDCOM file content into simp
 Most GEDCOM software only uses a limited amount of the tags. It would take a lot of time to cover all tags in their variations and it would be of little use. The approach taken here is to cover all normally used tags. Some tags are delibaretely skipped as they currently are irrelevant for my needs. Unusual tags that are neither handled nor skipped will cause exceptions when they turn up. This is intentional as it will give the oppurtunity to make a deliberate choice if it is relevant to extend the logic and include that tag or not.
 
 ## Internal Design
-The GEDCOM file holds simple lines. They basically all have the same structure: 
+The GEDCOM file holds simple lines. They basically all have the same structure:
 
     Level [Id] Type [Data] [Reference]
 
 The parser will first read all lines into a collection of GedcomLines.
 By using the Level property they are then structured into GedcomChunks. Each GedcomChunk represents a GedcomLine and a subcollection of GedcomChunks.
-The data is then parsed by processing all top chunks and their internal children interpret the Data is interpreted according to its Type.
+The data is then parsed by processing all top chunks and their internal children. All data is interpreted according to its Type.
 The main chunks represent either individuals and families. All other chunks are sub structures or reference information.
-Individual maps directly to a regular person with all needed attributes.
+Person maps directly to a regular person with all needed attributes.
 Family is a hub to describe the internal relations of a nuclear family.
-From this the parser produces two resulting collections named Persons and Relations. They can then be used for further high level processing. When targeting graph databases they are ideal as they directly map to nodes and relations without much additional effort.
+The parser produces two resulting collections named Persons and Relations. They can then be used for further high level processing. When targeting graph databases they are ideal as they directly map to nodes and relations without much additional effort.

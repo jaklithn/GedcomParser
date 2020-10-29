@@ -1,0 +1,37 @@
+======================================================================
+  ALL types detected in the file : 'CustomSample.Windsor.ged'
+======================================================================
+BIRT
+    DATE
+    PLAC
+CHIL
+DATE
+DEAT
+    DATE
+    PLAC
+DIV
+    DATE
+FAM
+    CHIL
+    DIV+
+    HUSB
+    MARR+
+    WIFE
+FILE
+HEAD
+HUSB
+INDI
+    BIRT+
+    DEAT+
+    NAME
+    OBJE+
+    SEX
+MARR
+    DATE
+NAME
+OBJE
+    FILE
+PLAC
+SEX
+TRLR
+WIFE
