@@ -56,7 +56,7 @@ namespace GedcomParser.Parsers
                         break;
 
                     default:
-                        resultContainer.Errors.Add($"Failed to handle Address Type='{chunk.Type}");
+                        resultContainer.Errors.Add($"Failed to handle Address Type='{chunk.Type}'");
                         break;
                 }
             }

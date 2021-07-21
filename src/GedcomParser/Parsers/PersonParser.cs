@@ -131,11 +131,11 @@ namespace GedcomParser.Parsers
                     case "PAGE":
                     case "RIN":
                     case "SOUR":
-                        resultContainer.Warnings.Add($"Skipped Person Type='{chunk.Type}");
+                        resultContainer.Warnings.Add($"Skipped Person Type='{chunk.Type}'");
                         break;
 
                     default:
-                        resultContainer.Errors.Add($"Failed to handle Person Type='{chunk.Type}");
+                        resultContainer.Errors.Add($"Failed to handle Person Type='{chunk.Type}'");
                         break;
                 }
             }

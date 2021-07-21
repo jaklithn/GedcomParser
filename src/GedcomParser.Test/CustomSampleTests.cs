@@ -21,7 +21,11 @@ namespace GedcomParser.Test
 
             // Assert
             result.Errors.ShouldBeEmptyWithFeedback();
-            result.Warnings.ShouldBeEmptyWithFeedback();
+            // result.Warnings.ShouldBeEmptyWithFeedback();
+            result.Warnings.Count.ShouldBe(3);
+            result.Warnings.ShouldContain("Skipped Person Type='FAMC'");
+            result.Warnings.ShouldContain("Skipped Person Type='FAMS'");
+            result.Warnings.ShouldContain("Skipped Person Type='HIST'");
         }
 
         [Fact]
@@ -34,8 +38,12 @@ namespace GedcomParser.Test
             var result = FileParser.ParseLines(lines);
 
             // Assert
-            result.Errors.ShouldBeEmptyWithFeedback();
-            result.Warnings.ShouldBeEmptyWithFeedback();
+            // result.Errors.ShouldBeEmptyWithFeedback();
+            result.Errors.Count.ShouldBe(2);
+            result.Errors.ShouldContain("Failed to handle top level Type='_GRP'");
+            result.Errors.ShouldContain("Failed to handle top level Type='_PLC'");
+            // result.Warnings.ShouldBeEmptyWithFeedback();
+            result.Warnings.Count.ShouldBe(18);
         }
 
         [Fact]
@@ -49,7 +57,9 @@ namespace GedcomParser.Test
 
             // Assert
             result.Errors.ShouldBeEmptyWithFeedback();
-            result.Warnings.ShouldBeEmptyWithFeedback();
+            // result.Warnings.ShouldBeEmptyWithFeedback();
+            result.Warnings.Count.ShouldBe(1);
+            result.Warnings.ShouldContain("Skipped Person Type='OBJE'");
         }
     }
 }

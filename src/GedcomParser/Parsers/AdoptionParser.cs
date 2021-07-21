@@ -28,11 +28,11 @@ namespace GedcomParser.Parsers
                     case "FAMC":
                     case "PLAC":
                     case "SOUR":
-                        resultContainer.Warnings.Add($"Skipped Adoption Type='{chunk.Type}");
+                        resultContainer.Warnings.Add($"Skipped Adoption Type='{chunk.Type}'");
                         break;
 
                     default:
-                        resultContainer.Errors.Add($"Failed to handle Adoption Type='{chunk.Type}");
+                        resultContainer.Errors.Add($"Failed to handle Adoption Type='{chunk.Type}'");
                         break;
                 }
             }

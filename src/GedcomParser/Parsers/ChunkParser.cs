@@ -36,14 +36,14 @@ namespace GedcomParser.Parsers
                     // Deliberately skipped for now
                     case "HEAD":
                     case "TRLR":
+                    case "CSTA": // Child status; used as 'enum' by Reunion software
                         break;
 
                     case "_GRP":
                     case "_PLC":
-                    case "CSTA":
                     case "GEDC":
                     default:
-                        resultContainer.Errors.Add($"Failed to handle top level Type='{chunk.Type}");
+                        resultContainer.Errors.Add($"Failed to handle top level Type='{chunk.Type}'");
                         break;
                 }
             }
