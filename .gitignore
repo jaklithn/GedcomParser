@@ -17,6 +17,9 @@ StefanFamilyAll.ged
 *.userosscache
 *.sln.docstates
 
+#Mac OS
+.DS_Store
+
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
