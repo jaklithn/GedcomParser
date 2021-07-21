@@ -3,6 +3,7 @@ using GedcomParser.Entities;
 using GedcomParser.Services;
 using GedcomParser.Test.Extensions;
 using GedcomParser.Test.Services;
+using Shouldly;
 using Xunit;
 
 
@@ -38,7 +39,11 @@ namespace GedcomParser.Test
 
             // Assert
             result.Errors.ShouldBeEmptyWithFeedback();
-            result.Warnings.ShouldBeEmptyWithFeedback();
+            // result.Warnings.ShouldBeEmptyWithFeedback();
+            result.Warnings.Count.ShouldBe(3);
+            result.Warnings.ShouldContain("Skipped Adoption Type='DATE'");
+            result.Warnings.ShouldContain("Skipped Person Type='FAMC'");
+            result.Warnings.ShouldContain("Skipped Person Type='FAMS'");
         }
 
         [Fact]
@@ -52,7 +57,11 @@ namespace GedcomParser.Test
 
             // Assert
             result.Errors.ShouldBeEmptyWithFeedback();
-            result.Warnings.ShouldBeEmptyWithFeedback();
+            // result.Warnings.ShouldBeEmptyWithFeedback();
+            result.Warnings.Count.ShouldBe(3);
+            result.Warnings.ShouldContain("Skipped Adoption Type='DATE'");
+            result.Warnings.ShouldContain("Skipped Person Type='FAMC'");
+            result.Warnings.ShouldContain("Skipped Person Type='FAMS'");
         }
 
         [Fact]
@@ -66,7 +75,11 @@ namespace GedcomParser.Test
 
             // Assert
             result.Errors.ShouldBeEmptyWithFeedback();
-            result.Warnings.ShouldBeEmptyWithFeedback();
+            // result.Warnings.ShouldBeEmptyWithFeedback();
+            result.Warnings.Count.ShouldBe(3);
+            result.Warnings.ShouldContain("Skipped Adoption Type='DATE'");
+            result.Warnings.ShouldContain("Skipped Person Type='FAMC'");
+            result.Warnings.ShouldContain("Skipped Person Type='FAMS'");
         }
 
         [Fact]
@@ -80,7 +93,9 @@ namespace GedcomParser.Test
 
             // Assert
             result.Errors.ShouldBeEmptyWithFeedback();
-            result.Warnings.ShouldBeEmptyWithFeedback();
+            // result.Warnings.ShouldBeEmptyWithFeedback();
+            result.Warnings.Count.ShouldBe(1);
+            result.Warnings.ShouldContain("Skipped Person Type='FAMS'");
         }
 
         [Fact]
@@ -94,7 +109,9 @@ namespace GedcomParser.Test
 
             // Assert
             result.Errors.ShouldBeEmptyWithFeedback();
-            result.Warnings.ShouldBeEmptyWithFeedback();
+            // result.Warnings.ShouldBeEmptyWithFeedback();
+            result.Warnings.Count.ShouldBe(1);
+            result.Warnings.ShouldContain("Skipped Person Type='FAMS'");
         }
 
     }

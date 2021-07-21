@@ -11,7 +11,7 @@ namespace GedcomParser.Test
     /// </summary>
     public class GedcomTortureTests
     {
-        [Fact]
+        [Fact(Skip = "Torture tests skipped for now")]
         public void CanParseTgc551()
         {
             // Arrange
@@ -25,7 +25,7 @@ namespace GedcomParser.Test
             result.Warnings.ShouldBeEmptyWithFeedback();
         }
 
-        [Fact]
+        [Fact(Skip = "Torture tests skipped for now")]
         public void CanParseTgc551Lf()
         {
             // Arrange
@@ -39,7 +39,7 @@ namespace GedcomParser.Test
             result.Warnings.ShouldBeEmptyWithFeedback();
         }
 
-        [Fact]
+        [Fact(Skip = "Torture tests skipped for now")]
         public void CanParseTgc55C()
         {
             // Arrange
@@ -53,7 +53,7 @@ namespace GedcomParser.Test
             result.Warnings.ShouldBeEmptyWithFeedback();
         }
 
-        [Fact]
+        [Fact(Skip = "Torture tests skipped for now")]
         public void CanParseTgc55Clf()
         {
             // Arrange
