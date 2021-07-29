@@ -1,4 +1,6 @@
-﻿namespace GedcomParser.Entities
+﻿using System.Collections.Generic;
+
+namespace GedcomParser.Entities
 {
     public class Person
     {
@@ -23,7 +25,7 @@
         public Adoption Adoption { get; set; }
         public DatePlace Residence { get; set; }
         public DatePlace Emigrated { get; set; }
-        public DatePlace Immigrated { get; set; }
+        public List<DatePlace> Immigrated { get; set; } = new List<DatePlace>();
         public DatePlace BecomingCitizen { get; set; }
         public DatePlace Graduation { get; set; }
     }

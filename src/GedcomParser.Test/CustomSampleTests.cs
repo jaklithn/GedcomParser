@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using GedcomParser.Services;
 using GedcomParser.Test.Extensions;
 using GedcomParser.Test.Services;
@@ -60,6 +61,22 @@ namespace GedcomParser.Test
             // result.Warnings.ShouldBeEmptyWithFeedback();
             result.Warnings.Count.ShouldBe(1);
             result.Warnings.ShouldContain("Skipped Person Type='OBJE'");
+        }
+
+        [Fact]
+        public void CanParseMultipleImmigrationEventsFamily()
+        {
+            // Arrange
+            var lines = ResourceHelper.GetLines("CustomSample.MultipleImmigrationEvents.ged");
+
+            // Act
+            var result = FileParser.ParseLines(lines);
+
+            // Assert
+            result.Errors.ShouldBeEmptyWithFeedback();
+            result.Warnings.ShouldContain("Skipped Person Type='FAMS'");
+            Assert.Collection(result.Persons, person => { Assert.Equal("Travis", person.FirstName.Trim()); Assert.Equal(2, person.Immigrated.Count); },
+                                              person => { Assert.Equal("Niles", person.FirstName.Trim()); Assert.Empty(person.Immigrated); });            
         }
     }
 }
