@@ -52,7 +52,7 @@ namespace GedcomParser.Parsers
                         break;
 
                     case "EMIG":
-                        person.Emigrated = resultContainer.ParseDatePlace(chunk);
+                        person.Emigrated.Add(resultContainer.ParseDatePlace(chunk));
                         break;
 
                     case "FACT":
