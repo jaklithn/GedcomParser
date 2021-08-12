@@ -44,11 +44,11 @@ namespace GedcomParser.Parsers
                     case "DATE":
                     case "PLAC":
                     case "SOUR":
-                        resultContainer.Warnings.Add($"Skipped Note Type='{chunk.Type}");
+                        resultContainer.Warnings.Add($"Skipped Note Type='{chunk.Type}'");
                         break;
 
                     default:
-                        resultContainer.Errors.Add($"Failed to handle Note Type='{chunk.Type}");
+                        resultContainer.Errors.Add($"Failed to handle Note Type='{chunk.Type}'");
                         break;
                 }
             }

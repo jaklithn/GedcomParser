@@ -78,11 +78,11 @@ namespace GedcomParser.Parsers
                     case "OBJE":
                     case "PAGE":
                     case "SOUR":
-                        resultContainer.Warnings.Add($"Skipped Family Type='{chunk.Type}");
+                        resultContainer.Warnings.Add($"Skipped Family Type='{chunk.Type}'");
                         break;
 
                     default:
-                        resultContainer.Errors.Add($"Failed to handle Family Type='{chunk.Type}");
+                        resultContainer.Errors.Add($"Failed to handle Family Type='{chunk.Type}'");
                         break;
                 }
             }
@@ -169,7 +169,7 @@ namespace GedcomParser.Parsers
                                         break;
 
                                     default:
-                                        resultContainer.Errors.Add($"Failed to handle Status Type='{chunk2.Type}");
+                                        resultContainer.Errors.Add($"Failed to handle Status Type='{chunk2.Type}'");
                                         break;
                                 }
                             }

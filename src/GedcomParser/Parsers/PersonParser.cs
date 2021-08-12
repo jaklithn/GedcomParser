@@ -52,7 +52,7 @@ namespace GedcomParser.Parsers
                         break;
 
                     case "EMIG":
-                        person.Emigrated = resultContainer.ParseDatePlace(chunk);
+                        person.Emigrated.Add(resultContainer.ParseDatePlace(chunk));
                         break;
 
                     case "FACT":
@@ -72,7 +72,7 @@ namespace GedcomParser.Parsers
                         break;
 
                     case "IMMI":
-                        person.Immigrated = resultContainer.ParseDatePlace(chunk);
+                        person.Immigrated.Add(resultContainer.ParseDatePlace(chunk));
                         break;
 
                     case "NAME":
@@ -131,11 +131,11 @@ namespace GedcomParser.Parsers
                     case "PAGE":
                     case "RIN":
                     case "SOUR":
-                        resultContainer.Warnings.Add($"Skipped Person Type='{chunk.Type}");
+                        resultContainer.Warnings.Add($"Skipped Person Type='{chunk.Type}'");
                         break;
 
                     default:
-                        resultContainer.Errors.Add($"Failed to handle Person Type='{chunk.Type}");
+                        resultContainer.Errors.Add($"Failed to handle Person Type='{chunk.Type}'");
                         break;
                 }
             }
