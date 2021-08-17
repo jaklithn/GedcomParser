@@ -1,7 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using GedcomParser.Entities;
 using GedcomParser.Entities.Internal;
-
 
 namespace GedcomParser.Parsers
 {
@@ -49,6 +50,20 @@ namespace GedcomParser.Parsers
 
                     case "EDUC":
                         person.Education = chunk.Data;
+                        break;
+                    case "EVEN":
+                        string eventType = GetEventType(chunk);
+                        if (person.Events.ContainsKey(eventType))
+                        {
+                            person.Events[eventType].Add(resultContainer.ParseDatePlace(chunk));
+                        }
+                        else 
+                        {
+                            person.Events.Add(eventType, new List<DatePlace>
+                            {
+                                resultContainer.ParseDatePlace(chunk)
+                            });
+                        }
                         break;
 
                     case "EMIG":
@@ -121,7 +136,6 @@ namespace GedcomParser.Parsers
                     case "_GRP":
                     case "CONF":
                     case "DSCR":
-                    case "EVEN":
                     case "FAMS":
                     case "FAMC":
                     case "HIST":
@@ -141,6 +155,11 @@ namespace GedcomParser.Parsers
             }
 
             resultContainer.Persons.Add(person);
+        }
+
+        internal static string GetEventType(GedcomChunk chunk)
+        {
+            return chunk.SubChunks.SingleOrDefault(c => c.Type == "TYPE")?.Data.ToLower();
         }
     }
 }
