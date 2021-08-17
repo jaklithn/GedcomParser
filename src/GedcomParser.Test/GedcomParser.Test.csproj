@@ -21,8 +21,7 @@
    
   <ItemGroup>
     <EmbeddedResource Include="Resources\CustomSample\Kennedy.ged" />
-    <EmbeddedResource Include="Resources\CustomSample\MultipleEmigrationEvents.ged" />
-    <EmbeddedResource Include="Resources\CustomSample\MultipleImmigrationEvents.ged" />
+    <EmbeddedResource Include="Resources\CustomSample\MultipleEvents.ged" />
     <EmbeddedResource Include="Resources\CustomSample\Stefan.ged" />
     <EmbeddedResource Include="Resources\CustomSample\Windsor.ged" />
   </ItemGroup>  

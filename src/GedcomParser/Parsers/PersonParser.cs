@@ -102,7 +102,7 @@ namespace GedcomParser.Parsers
                         break;
 
                     case "RESI":
-                        person.Residence = resultContainer.ParseDatePlace(chunk);
+                        person.Residence.Add(resultContainer.ParseDatePlace(chunk));
                         break;
 
                     case "RELI":
