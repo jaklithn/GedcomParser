@@ -67,7 +67,7 @@ namespace GedcomParser.Test
         public void CanParseMultipleImmigrationEventsFamily()
         {
             // Arrange
-            var lines = ResourceHelper.GetLines("CustomSample.MultipleImmigrationEvents.ged");
+            var lines = ResourceHelper.GetLines("CustomSample.MultipleEvents.ged");
 
             // Act
             var result = FileParser.ParseLines(lines);
@@ -83,7 +83,7 @@ namespace GedcomParser.Test
         public void CanParseMultipleEmigrationEventsFamily()
         {
             // Arrange
-            var lines = ResourceHelper.GetLines("CustomSample.MultipleEmigrationEvents.ged");
+            var lines = ResourceHelper.GetLines("CustomSample.MultipleEvents.ged");
 
             // Act
             var result = FileParser.ParseLines(lines);
@@ -93,6 +93,23 @@ namespace GedcomParser.Test
             result.Warnings.ShouldContain("Skipped Person Type='FAMS'");
             Assert.Collection(result.Persons, person => { Assert.Equal("Travis", person.FirstName.Trim()); Assert.Equal(2, person.Emigrated.Count); },
                                               person => { Assert.Equal("Niles", person.FirstName.Trim()); Assert.Empty(person.Emigrated); });
+        }
+
+        [Fact]
+        public void CanParseMultipleResidenceEventsFamily()
+        {
+            //Arrange
+            var lines = ResourceHelper.GetLines("CustomSample.MultipleEvents.ged");
+
+            //Act
+            var result = FileParser.ParseLines(lines);
+
+            //Assert
+            result.Errors.ShouldBeEmptyWithFeedback();
+            result.Warnings.ShouldContain("Skipped Person Type='FAMS'");
+            Assert.Collection(result.Persons, person => { Assert.Equal("Travis", person.FirstName.Trim()); Assert.Equal(3, person.Residence.Count); },
+                person => { Assert.Equal("Niles", person.FirstName.Trim()); Assert.Empty(person.Residence); });
+
         }
     }
 }

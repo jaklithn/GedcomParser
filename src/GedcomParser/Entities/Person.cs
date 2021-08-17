@@ -23,7 +23,7 @@ namespace GedcomParser.Entities
         public string Title { get; set; }
         public Address Address { get; set; }
         public Adoption Adoption { get; set; }
-        public DatePlace Residence { get; set; }
+        public List<DatePlace> Residence { get; set; } = new List<DatePlace>();
         public List<DatePlace> Emigrated { get; set; } = new List<DatePlace>();
         public List<DatePlace> Immigrated { get; set; } = new List<DatePlace>();
         public DatePlace BecomingCitizen { get; set; }
