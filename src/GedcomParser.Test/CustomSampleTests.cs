@@ -127,12 +127,28 @@ namespace GedcomParser.Test
             Assert.Collection(result.Persons, person => { Assert.Equal("Travis", person.FirstName.Trim()); Assert.Equal(3, person.Events["arrival"].Count);
                                                           Assert.Equal(2, person.Events["departure"].Count); },
                                               person => { Assert.Equal("Niles", person.FirstName.Trim()); Assert.Empty(person.Events); });
-            Assert.Collection(result.Persons, person => { Assert.Equal("20 08 2000", person.Events["arrival"].FirstOrDefault().Date);
+            Assert.Collection(result.Persons, person => { Assert.Equal("20 Aug 2000", person.Events["arrival"].FirstOrDefault().Date);
                                                           Assert.Equal("Nevada City, Merced, California, USA", person.Events["arrival"].FirstOrDefault().Place);
-                                                          Assert.Equal("12 07 2005", person.Events["departure"].FirstOrDefault().Date);
+                                                          Assert.Equal("12 Jul 2005", person.Events["departure"].FirstOrDefault().Date);
                                                           Assert.Equal("California Hot Springs, Tulare, California, USA", person.Events["departure"].FirstOrDefault().Place);
                                                         },
                                               person => { Assert.Empty(person.Events); });
+        }
+
+        [Fact]
+        public void CanParseMultipleNaturalizationEventsFamily()
+        {
+            //Arrange
+            var lines = ResourceHelper.GetLines("CustomSample.MultipleEvents.ged");
+
+            //Act
+            var result = FileParser.ParseLines(lines);
+
+            //Assert
+            result.Errors.ShouldBeEmptyWithFeedback();
+            result.Warnings.ShouldContain("Skipped Person Type='FAMS'");
+            Assert.Collection(result.Persons, person => { Assert.Equal("Travis", person.FirstName.Trim()); Assert.Equal(2, person.BecomingCitizen.Count); },
+                person => { Assert.Equal("Niles", person.FirstName.Trim()); Assert.Equal(2, person.BecomingCitizen.Count); });
         }
     }
 }

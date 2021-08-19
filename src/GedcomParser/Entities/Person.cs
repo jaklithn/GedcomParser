@@ -26,7 +26,7 @@ namespace GedcomParser.Entities
         public List<DatePlace> Residence { get; set; } = new List<DatePlace>();
         public List<DatePlace> Emigrated { get; set; } = new List<DatePlace>();
         public List<DatePlace> Immigrated { get; set; } = new List<DatePlace>();
-        public DatePlace BecomingCitizen { get; set; }
+        public List<DatePlace> BecomingCitizen { get; set; } = new List<DatePlace>();
         public DatePlace Graduation { get; set; }
         public Dictionary<string, List<DatePlace>> Events { get; set; } = new Dictionary<string, List<DatePlace>>();
     }

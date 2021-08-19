@@ -105,7 +105,7 @@ namespace GedcomParser.Parsers
                         break;
 
                     case "NATU":
-                        person.BecomingCitizen = resultContainer.ParseDatePlace(chunk);
+                        person.BecomingCitizen.Add(resultContainer.ParseDatePlace(chunk));
                         break;
 
                     case "NOTE":
