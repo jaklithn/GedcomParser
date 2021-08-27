@@ -120,6 +120,10 @@ namespace GedcomParser.Parsers
                         person.Residence.Add(resultContainer.ParseDatePlace(chunk));
                         break;
 
+                    case "CENS":
+                        person.Census.Add(resultContainer.ParseDatePlace(chunk));
+                        break;
+
                     case "RELI":
                         person.Religion = chunk.Data;
                         break;

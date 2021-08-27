@@ -12,8 +12,8 @@
 3 ADDR 1300 West Traverse Parkway
 4 CONT Lehi, UT  84043
 4 CONT USA
-1 DATE 18 Aug 2021
-2 TIME 10:53:44
+1 DATE 27 Aug 2021
+2 TIME 05:27:41
 1 GEDC
 2 VERS 5.5.1
 2 FORM LINEAGE-LINKED
@@ -29,6 +29,9 @@
 1 BIRT
 2 DATE 12 Jan 1993
 2 PLAC Leeds, Yorkshire, England
+1 CENS
+2 DATE 19 Aug 1999
+2 PLAC Utah County, Utah, USA
 1 RESI
 2 DATE 10 Oct 1999
 2 PLAC Nevada City, Merced, California, USA
@@ -64,6 +67,9 @@
 1 RESI
 2 DATE 20 Aug 2010
 2 PLAC Utah County, Utah, USA
+1 CENS
+2 DATE 28 Jul 2011
+2 PLAC Manchester, Lancashire, England
 1 EMIG
 2 DATE 30 Jan 2020
 2 PLAC Utah County, Utah, USA

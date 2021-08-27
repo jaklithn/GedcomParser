@@ -150,5 +150,22 @@ namespace GedcomParser.Test
             Assert.Collection(result.Persons, person => { Assert.Equal("Travis", person.FirstName.Trim()); Assert.Equal(2, person.BecomingCitizen.Count); },
                 person => { Assert.Equal("Niles", person.FirstName.Trim()); Assert.Equal(2, person.BecomingCitizen.Count); });
         }
+
+        [Fact]
+        public void CanParseMultipleCensusEventsFamily()
+        {
+            //Arrange
+            var lines = ResourceHelper.GetLines("CustomSample.MultipleEvents.ged");
+
+            //Act
+            var result = FileParser.ParseLines(lines);
+
+            //Assert
+            result.Errors.ShouldBeEmptyWithFeedback();
+            result.Warnings.ShouldContain("Skipped Person Type='FAMS'");
+            Assert.Collection(result.Persons, person => { Assert.Equal("Travis", person.FirstName.Trim()); Assert.Equal(2, person.Census.Count); },
+                person => { Assert.Equal("Niles", person.FirstName.Trim()); Assert.Empty(person.Census); });
+
+        }
     }
 }
