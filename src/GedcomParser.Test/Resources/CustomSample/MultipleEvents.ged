@@ -12,8 +12,8 @@
 3 ADDR 1300 West Traverse Parkway
 4 CONT Lehi, UT  84043
 4 CONT USA
-1 DATE 27 Aug 2021
-2 TIME 05:27:41
+1 DATE 18 Aug 2021
+2 TIME 10:53:44
 1 GEDC
 2 VERS 5.5.1
 2 FORM LINEAGE-LINKED
@@ -32,14 +32,14 @@
 1 CENS
 2 DATE 19 Aug 1999
 2 PLAC Utah County, Utah, USA
-1 RESI
+1 RESI Resident of Nevada
 2 DATE 10 Oct 1999
 2 PLAC Nevada City, Merced, California, USA
 1 EVEN Arrival to Nevada
 2 TYPE Arrival
 2 DATE 20 Aug 2000
 2 PLAC Nevada City, Merced, California, USA
-1 NATU
+1 NATU Citizen of Manchester
 2 DATE 21 Dec 2000
 2 PLAC Manchester, Lancashire, England
 1 EVEN Departure to California
@@ -58,28 +58,28 @@
 2 TYPE Arrival
 2 DATE 12 Jun 2010
 2 PLAC Calabria, Italy
-1 EMIG
+1 EMIG Emigrated from Leeds
 2 DATE 20 Aug 2010
 2 PLAC Leeds, Yorkshire, England
 1 IMMI Shifted to USA
 2 DATE 20 Aug 2010
 2 PLAC Utah County, Utah, USA
-1 RESI
+1 RESI Resident of Utah
 2 DATE 20 Aug 2010
 2 PLAC Utah County, Utah, USA
 1 CENS
 2 DATE 28 Jul 2011
 2 PLAC Manchester, Lancashire, England
-1 EMIG
+1 EMIG Emigrated from Utah
 2 DATE 30 Jan 2020
 2 PLAC Utah County, Utah, USA
 1 IMMI Shifted to England
 2 DATE 30 Jan 2020
 2 PLAC Leeds, Yorkshire, England
-1 RESI
+1 RESI Resident of Leeds
 2 DATE 30 Jan 2020
 2 PLAC Leeds, Yorkshire, England
-1 NATU
+1 NATU Citizen of Leeds
 2 DATE 19 Jun 2021
 2 PLAC Leeds, Yorkshire, England
 0 @I272301164063@ INDI

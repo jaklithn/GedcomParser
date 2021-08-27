@@ -167,5 +167,55 @@ namespace GedcomParser.Test
                 person => { Assert.Equal("Niles", person.FirstName.Trim()); Assert.Empty(person.Census); });
 
         }
+
+        [Fact]
+        public void CanParseDescriptionOfEvents()
+        {
+            //Arrange
+            var lines = ResourceHelper.GetLines("CustomSample.MultipleEvents.ged");
+
+            //Act
+            var result = FileParser.ParseLines(lines);
+
+            var firstPersonInTree = result.Persons.FirstOrDefault(p => p.Id.Trim().Equals("@I272301164062@"));
+            
+            var immigrationEvents       = firstPersonInTree.Immigrated;
+            var emigrationEvents        = firstPersonInTree.Emigrated;
+            var residenceEvents         = firstPersonInTree.Residence;
+            var naturalizationEvents    = firstPersonInTree.BecomingCitizen;
+            var migrationEvents         = firstPersonInTree.Events;
+
+            //Assert
+            result.Errors.ShouldBeEmptyWithFeedback();
+            result.Warnings.ShouldContain("Skipped Person Type='FAMS'");
+
+            Assert.Equal(2, immigrationEvents.Count);
+            Assert.Equal(2, emigrationEvents.Count);
+            Assert.Equal(3, residenceEvents.Count);
+            Assert.Equal(2, naturalizationEvents.Count);
+            Assert.Equal(3, migrationEvents["arrival"].Count);
+            Assert.Equal(2, migrationEvents["departure"].Count);
+
+            Assert.Collection(immigrationEvents, evt => { Assert.Equal("Shifted to USA", evt.Description); },
+                                                 evt => { Assert.Equal("Shifted to England", evt.Description); });
+
+            Assert.Collection(emigrationEvents, evt => { Assert.Equal("Emigrated from Leeds", evt.Description); },
+                                               evt => { Assert.Equal("Emigrated from Utah", evt.Description); });
+
+            Assert.Collection(residenceEvents, evt => { Assert.Equal("Resident of Nevada", evt.Description); },
+                                               evt => { Assert.Equal("Resident of Utah", evt.Description); },
+                                               evt => { Assert.Equal("Resident of Leeds", evt.Description); });
+
+            Assert.Collection(naturalizationEvents, evt => { Assert.Equal("Citizen of Manchester", evt.Description); },
+                                                    evt => { Assert.Equal("Citizen of Leeds", evt.Description); });
+
+            Assert.Collection(migrationEvents["arrival"], evt => { Assert.Equal("Arrival to Nevada", evt.Description); },
+                                                          evt => { Assert.Equal("Arrival to New York", evt.Description); },
+                                                          evt => { Assert.Equal("Arrival to Italy", evt.Description); });
+
+            Assert.Collection(migrationEvents["departure"], evt => { Assert.Equal("Departure to California", evt.Description); },
+                                                            evt => { Assert.Equal("Departure from Utah", evt.Description); });
+
+        }
     }
 }
