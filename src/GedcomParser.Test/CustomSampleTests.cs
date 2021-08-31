@@ -169,6 +169,23 @@ namespace GedcomParser.Test
         }
 
         [Fact]
+        public void CanParseMultipleDestinationEventsFamily()
+        {
+            //Arrange
+            var lines = ResourceHelper.GetLines("CustomSample.MultipleEvents.ged");
+
+            //Act
+            var result = FileParser.ParseLines(lines);
+
+            //Assert
+            result.Errors.ShouldBeEmptyWithFeedback();
+            result.Warnings.ShouldContain("Skipped Person Type='FAMS'");
+            Assert.Collection(result.Persons, person => { Assert.Equal("Travis", person.FirstName.Trim()); Assert.Equal(2, person.Destination.Count); },
+                person => { Assert.Equal("Niles", person.FirstName.Trim()); Assert.Equal(2,person.Destination.Count); });
+
+        }
+
+        [Fact]
         public void CanParseDescriptionOfEvents()
         {
             //Arrange
@@ -183,6 +200,7 @@ namespace GedcomParser.Test
             var emigrationEvents        = firstPersonInTree.Emigrated;
             var residenceEvents         = firstPersonInTree.Residence;
             var naturalizationEvents    = firstPersonInTree.BecomingCitizen;
+            var destinationEvents       = firstPersonInTree.Destination;
             var migrationEvents         = firstPersonInTree.Events;
 
             //Assert
@@ -193,6 +211,7 @@ namespace GedcomParser.Test
             Assert.Equal(2, emigrationEvents.Count);
             Assert.Equal(3, residenceEvents.Count);
             Assert.Equal(2, naturalizationEvents.Count);
+            Assert.Equal(2, destinationEvents.Count);
             Assert.Equal(3, migrationEvents["arrival"].Count);
             Assert.Equal(2, migrationEvents["departure"].Count);
 
@@ -215,6 +234,9 @@ namespace GedcomParser.Test
 
             Assert.Collection(migrationEvents["departure"], evt => { Assert.Equal("Departure to California", evt.Description); },
                                                             evt => { Assert.Equal("Departure from Utah", evt.Description); });
+
+            Assert.Collection(destinationEvents, evt => { Assert.Equal("California Mesa, Delta", evt.Description); },
+                                                    evt => { Assert.Equal("Washington County, Alabama", evt.Description); });
 
         }
     }

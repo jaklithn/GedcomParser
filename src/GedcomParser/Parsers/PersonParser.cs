@@ -124,6 +124,10 @@ namespace GedcomParser.Parsers
                         person.Census.Add(resultContainer.ParseDatePlace(chunk));
                         break;
 
+                    case "_DEST":
+                        person.Destination.Add(resultContainer.ParseDatePlace(chunk));
+                        break;
+
                     case "RELI":
                         person.Religion = chunk.Data;
                         break;

@@ -30,5 +30,6 @@ namespace GedcomParser.Entities
         public DatePlace Graduation { get; set; }
         public Dictionary<string, List<DatePlace>> Events { get; set; } = new Dictionary<string, List<DatePlace>>();
         public List<DatePlace> Census { get; set; } = new List<DatePlace>();
+        public List<DatePlace> Destination { get; set; } = new List<DatePlace>();
     }
 }

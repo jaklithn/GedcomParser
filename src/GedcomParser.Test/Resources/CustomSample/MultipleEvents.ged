@@ -12,8 +12,8 @@
 3 ADDR 1300 West Traverse Parkway
 4 CONT Lehi, UT  84043
 4 CONT USA
-1 DATE 18 Aug 2021
-2 TIME 10:53:44
+1 DATE 31 Aug 2021
+2 TIME 09:40:38
 1 GEDC
 2 VERS 5.5.1
 2 FORM LINEAGE-LINKED
@@ -70,6 +70,12 @@
 1 CENS
 2 DATE 28 Jul 2011
 2 PLAC Manchester, Lancashire, England
+1 _DEST California Mesa, Delta
+2 DATE 12 Aug 2012
+2 PLAC California Mesa, Delta, Colorado, USA
+1 _DEST Washington County, Alabama
+2 DATE 22 Jan 2015
+2 PLAC Washington County, Alabama, USA
 1 EMIG Emigrated from Utah
 2 DATE 30 Jan 2020
 2 PLAC Utah County, Utah, USA
@@ -91,9 +97,15 @@
 1 BIRT
 2 DATE 14 July 1995
 2 PLAC Utah County, Utah, USA
+1 _DEST Utah Junction, Adams
+2 DATE 12 Mar 1999
+2 PLAC Utah Junction, Adams, Colorado, USA
 1 NATU
 2 DATE 07 Nov 1999
 2 PLAC Utah County, Utah, USA
+1 _DEST California Hot Springs, Tulare
+2 DATE 23 Feb 2011
+2 PLAC California Hot Springs, Tulare, California, USA
 1 NATU
 2 DATE 19 Jun 2021
 2 PLAC Leeds, Yorkshire, England
