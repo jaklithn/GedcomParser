@@ -33,6 +33,7 @@
     <EmbeddedResource Include="Resources\GedcomStandard\MINIMAL555.GED" />
     <EmbeddedResource Include="Resources\GedcomStandard\REMARR.GED" />
     <EmbeddedResource Include="Resources\GedcomStandard\SSMARR.GED" />
+    <EmbeddedResource Include="Resources\GedcomStandard\REENGA.GED" />
   </ItemGroup>   
  
   <ItemGroup>

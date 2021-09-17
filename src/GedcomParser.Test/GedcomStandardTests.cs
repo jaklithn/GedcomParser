@@ -99,6 +99,22 @@ namespace GedcomParser.Test
         }
 
         [Fact]
+        public void CanParseReEngagement()
+        {
+            // Arrange
+            var lines = ResourceHelper.GetLines("GedcomStandard.REENGA.GED");
+
+            // Act
+            var result = FileParser.ParseLines(lines);
+
+            // Assert
+            result.Errors.ShouldBeEmptyWithFeedback();
+            result.Warnings.Count.ShouldBe(2);
+            result.Warnings.ShouldContain("Skipped Person Type='FAMS'");
+            result.Warnings.ShouldContain("Skipped Person Type='FAMC'");
+        }
+
+        [Fact]
         public void CanParseSameSexMarriage()
         {
             // Arrange

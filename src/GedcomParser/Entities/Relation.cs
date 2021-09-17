@@ -16,6 +16,7 @@
 
     public class SpouseRelation : Relation
     {
+        public DatePlace Engagement { get; set; }
         public DatePlace Marriage { get; set; }
         public DatePlace Divorce { get; set; }
         public string Relation { get; set; }
