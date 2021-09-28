@@ -146,5 +146,19 @@ namespace GedcomParser.Test
             result.Warnings.ShouldContain("Skipped Person Type='FAMS'");
         }
 
+        [Fact]
+        public void CanParseMarriageContract()
+        {
+            // Arrange
+            var lines = ResourceHelper.GetLines("GedcomStandard.MARC.ged");
+
+            // Act
+            var result = FileParser.ParseLines(lines);
+
+            // Assert
+            result.Errors.ShouldBeEmptyWithFeedback();
+            result.Warnings.Count.ShouldBe(1);
+            result.Warnings.ShouldContain("Skipped Person Type='FAMS'");
+        }
     }
 }

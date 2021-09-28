@@ -1,11 +1,11 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
- <ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\GedcomParser\GedcomParser.csproj" />
   </ItemGroup> 
 
@@ -30,6 +30,7 @@
     <EmbeddedResource Include="Resources\GedcomStandard\555SAMPLE.GED" />
     <EmbeddedResource Include="Resources\GedcomStandard\555SAMPLE16BE.GED" />
     <EmbeddedResource Include="Resources\GedcomStandard\555SAMPLE16LE.GED" />
+    <EmbeddedResource Include="Resources\GedcomStandard\MARC.ged" />
     <EmbeddedResource Include="Resources\GedcomStandard\DIVF.ged" />
     <EmbeddedResource Include="Resources\GedcomStandard\MINIMAL555.GED" />
     <EmbeddedResource Include="Resources\GedcomStandard\REMARR.GED" />

@@ -239,5 +239,22 @@ namespace GedcomParser.Test
                                                     evt => { Assert.Equal("Washington County, Alabama", evt.Description); });
 
         }
+
+        [Fact]
+        public void CanParseMarriageContractEvents()
+        {
+            //Arrange
+            var lines = ResourceHelper.GetLines("CustomSample.MultipleEvents.ged");
+
+            //Act
+            var result = FileParser.ParseLines(lines);
+
+            //Assert
+            result.Errors.ShouldBeEmptyWithFeedback();
+            result.Warnings.ShouldContain("Skipped Person Type='FAMS'");
+
+            Assert.Collection(result.SpouseRelations, spousal => { Assert.Equal("Travis", spousal.From.FirstName.Trim()); Assert.NotNull(spousal.MarriageContract); });
+
+        }
     }
 }
