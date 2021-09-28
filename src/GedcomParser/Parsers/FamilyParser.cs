@@ -11,13 +11,14 @@ namespace GedcomParser.Parsers
     {
         internal static void ParseFamily(this ResultContainer resultContainer, GedcomChunk famChunk)
         {
-            DatePlace engagement = null;
-            DatePlace marriage = null;
-            string relation = null;
-            string note = null;
-            DatePlace divorce = null;
-            var parents = new List<Person>();
-            var children = new List<Person>();
+            DatePlace engagement    = null;
+            DatePlace marriage      = null;
+            string relation         = null;
+            string note             = null;
+            DatePlace divorceFiled  = null;
+            DatePlace divorce       = null;
+            var parents             = new List<Person>();
+            var children            = new List<Person>();
 
             foreach (var chunk in famChunk.SubChunks)
             {
@@ -34,6 +35,10 @@ namespace GedcomParser.Parsers
 
                     case "DIV":
                         divorce = resultContainer.ParseDatePlace(chunk);
+                        break;
+
+                    case "DIVF":
+                        divorceFiled = resultContainer.ParseDatePlace(chunk);
                         break;
 
                     case "HUSB":
@@ -97,14 +102,15 @@ namespace GedcomParser.Parsers
             {
                 resultContainer.SpouseRelations.Add(new SpouseRelation
                 {
-                    FamilyId = famChunk.Id,
-                    From = parents[0],
-                    To = parents[1],
-                    Engagement = engagement,
-                    Marriage = marriage,
-                    Divorce = divorce,
-                    Relation = relation,
-                    Note = note
+                    FamilyId     = famChunk.Id,
+                    From         = parents[0],
+                    To           = parents[1],
+                    Engagement   = engagement,
+                    Marriage     = marriage,
+                    DivorceFiled = divorceFiled,
+                    Divorce      = divorce,
+                    Relation     = relation,
+                    Note         = note
                 });
             }
 

@@ -115,6 +115,22 @@ namespace GedcomParser.Test
         }
 
         [Fact]
+        public void CanParseDivorceFiled()
+        {
+            // Arrange
+            var lines = ResourceHelper.GetLines("GedcomStandard.DIVF.ged");
+
+            // Act
+            var result = FileParser.ParseLines(lines);
+
+            // Assert
+            result.Errors.ShouldBeEmptyWithFeedback();
+            result.Warnings.Count.ShouldBe(2);
+            result.Warnings.ShouldContain("Skipped Person Type='FAMS'");
+            result.Warnings.ShouldContain("Skipped Person Type='FAMC'");
+        }
+
+        [Fact]
         public void CanParseSameSexMarriage()
         {
             // Arrange
