@@ -6,10 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Resources\GedcomStandard\ANNUL.ged" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\GedcomParser\GedcomParser.csproj" />
   </ItemGroup> 
 
