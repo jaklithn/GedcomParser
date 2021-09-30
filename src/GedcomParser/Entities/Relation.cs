@@ -21,6 +21,7 @@
         public DatePlace MarriageContract { get; set; }
         public DatePlace Divorce { get; set; }
         public DatePlace DivorceFiled { get; set; }
+        public DatePlace Annulment { get; set; }
         public string Relation { get; set; }
         public string Note { get; set; }
     }

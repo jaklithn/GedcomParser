@@ -18,6 +18,7 @@ namespace GedcomParser.Parsers
             string note             = null;
             DatePlace divorceFiled  = null;
             DatePlace divorce       = null;
+            DatePlace annulment     = null;
             var parents             = new List<Person>();
             var children            = new List<Person>();
 
@@ -40,6 +41,10 @@ namespace GedcomParser.Parsers
 
                     case "DIVF":
                         divorceFiled = resultContainer.ParseDatePlace(chunk);
+                        break;
+
+                    case "ANUL":
+                        annulment = resultContainer.ParseDatePlace(chunk);
                         break;
 
                     case "HUSB":
@@ -115,6 +120,7 @@ namespace GedcomParser.Parsers
                     MarriageContract = marriageContract,
                     DivorceFiled = divorceFiled,
                     Divorce      = divorce,
+                    Annulment    = annulment,
                     Relation     = relation,
                     Note         = note
                 });
