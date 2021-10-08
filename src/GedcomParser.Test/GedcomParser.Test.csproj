@@ -4,7 +4,7 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
-
+	
   <ItemGroup>
     <ProjectReference Include="..\GedcomParser\GedcomParser.csproj" />
   </ItemGroup> 
@@ -33,6 +33,7 @@
     <EmbeddedResource Include="Resources\GedcomStandard\ANNUL.ged" />
     <EmbeddedResource Include="Resources\GedcomStandard\MARC.ged" />
     <EmbeddedResource Include="Resources\GedcomStandard\DIVF.ged" />
+    <EmbeddedResource Include="Resources\GedcomStandard\MARS.ged" />
     <EmbeddedResource Include="Resources\GedcomStandard\MINIMAL555.GED" />
     <EmbeddedResource Include="Resources\GedcomStandard\REMARR.GED" />
     <EmbeddedResource Include="Resources\GedcomStandard\SSMARR.GED" />

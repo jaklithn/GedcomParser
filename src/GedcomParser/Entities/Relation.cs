@@ -19,6 +19,7 @@
         public DatePlace Engagement { get; set; }
         public DatePlace Marriage { get; set; }
         public DatePlace MarriageContract { get; set; }
+        public DatePlace MarriageSettlement { get; set; }
         public DatePlace Divorce { get; set; }
         public DatePlace DivorceFiled { get; set; }
         public DatePlace Annulment { get; set; }
