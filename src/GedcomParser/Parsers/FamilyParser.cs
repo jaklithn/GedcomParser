@@ -11,16 +11,11 @@ namespace GedcomParser.Parsers
     {
         internal static void ParseFamily(this ResultContainer resultContainer, GedcomChunk famChunk)
         {
-            DatePlace engagement = null;
-            DatePlace marriage = null;
-            DatePlace marriageContract = null;
-            string relation         = null;
-            string note             = null;
-            DatePlace divorceFiled  = null;
-            DatePlace divorce       = null;
-            DatePlace annulment     = null;
-            var parents             = new List<Person>();
-            var children            = new List<Person>();
+            var spousalRelation = new SpouseRelation();
+            string relation = null;
+            string note = null;
+            var parents = new List<Person>();
+            var children = new List<Person>();
 
             foreach (var chunk in famChunk.SubChunks)
             {
@@ -36,15 +31,15 @@ namespace GedcomParser.Parsers
                         break;
 
                     case "DIV":
-                        divorce = resultContainer.ParseDatePlace(chunk);
+                        spousalRelation.Divorce.Add(resultContainer.ParseDatePlace(chunk));
                         break;
 
                     case "DIVF":
-                        divorceFiled = resultContainer.ParseDatePlace(chunk);
+                        spousalRelation.DivorceFiled.Add(resultContainer.ParseDatePlace(chunk));
                         break;
 
                     case "ANUL":
-                        annulment = resultContainer.ParseDatePlace(chunk);
+                        spousalRelation.Annulment.Add(resultContainer.ParseDatePlace(chunk));
                         break;
 
                     case "HUSB":
@@ -61,15 +56,15 @@ namespace GedcomParser.Parsers
                         break;
 
                     case "MARR":
-                        marriage = resultContainer.ParseDatePlace(chunk);
+                        spousalRelation.Marriage.Add(resultContainer.ParseDatePlace(chunk));
                         break;
 
                     case "MARC":
-                        marriageContract = resultContainer.ParseDatePlace(chunk);
+                        spousalRelation.MarriageContract.Add(resultContainer.ParseDatePlace(chunk));
                         break;
 
                     case "ENGA":
-                        engagement = resultContainer.ParseDatePlace(chunk);
+                        spousalRelation.Engagement.Add(resultContainer.ParseDatePlace(chunk));
                         break;
 
                     case "NOTE":
@@ -115,14 +110,14 @@ namespace GedcomParser.Parsers
                     FamilyId = famChunk.Id,
                     From = parents[0],
                     To = parents[1],
-                    Engagement = engagement,
-                    Marriage = marriage,
-                    MarriageContract = marriageContract,
-                    DivorceFiled = divorceFiled,
-                    Divorce      = divorce,
-                    Annulment    = annulment,
-                    Relation     = relation,
-                    Note         = note
+                    Engagement       = spousalRelation.Engagement,
+                    Marriage         = spousalRelation.Marriage,
+                    MarriageContract = spousalRelation.MarriageContract,
+                    DivorceFiled     = spousalRelation.DivorceFiled,
+                    Divorce          = spousalRelation.Divorce,
+                    Annulment        = spousalRelation.Annulment,
+                    Relation         = relation,
+                    Note             = note
                 });
             }
 

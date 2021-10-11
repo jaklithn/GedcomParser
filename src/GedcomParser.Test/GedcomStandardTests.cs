@@ -175,5 +175,20 @@ namespace GedcomParser.Test
             result.Warnings.Count.ShouldBe(1);
             result.Warnings.ShouldContain("Skipped Person Type='FAMS'");
         }
+
+        [Fact]
+        public void CanParseMultipleSpousalEventOfSameType()
+        {
+            // Arrange
+            var lines = ResourceHelper.GetLines("GedcomStandard.Mark Family Tree.ged");
+
+            // Act
+            var result = FileParser.ParseLines(lines);
+
+            // Assert
+            result.Errors.ShouldBeEmptyWithFeedback();
+            result.Warnings.Count.ShouldBe(1);
+            result.Warnings.ShouldContain("Skipped Person Type='FAMS'");
+        }
     }
 }
