@@ -14,6 +14,8 @@ namespace GedcomParser.Parsers
             DatePlace engagement = null;
             DatePlace marriage = null;
             DatePlace marriageContract = null;
+            DatePlace marriageBann = null;
+            DatePlace marriageLicense = null;
             string relation         = null;
             string note             = null;
             DatePlace divorceFiled  = null;
@@ -68,6 +70,14 @@ namespace GedcomParser.Parsers
                         marriageContract = resultContainer.ParseDatePlace(chunk);
                         break;
 
+                    case "MARB":
+                        marriageBann = resultContainer.ParseDatePlace(chunk);
+                        break;
+
+                    case "MARL":
+                        marriageLicense = resultContainer.ParseDatePlace(chunk);
+                        break;
+
                     case "ENGA":
                         engagement = resultContainer.ParseDatePlace(chunk);
                         break;
@@ -118,6 +128,8 @@ namespace GedcomParser.Parsers
                     Engagement = engagement,
                     Marriage = marriage,
                     MarriageContract = marriageContract,
+                    MarriageBann = marriageBann,
+                    MarriageLicense = marriageLicense,
                     DivorceFiled = divorceFiled,
                     Divorce      = divorce,
                     Annulment    = annulment,
