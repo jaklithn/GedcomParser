@@ -177,6 +177,36 @@ namespace GedcomParser.Test
         }
 
         [Fact]
+        public void CanParseMarriageBann()
+        {
+            // Arrange
+            var lines = ResourceHelper.GetLines("GedcomStandard.MARB.ged");
+
+            // Act
+            var result = FileParser.ParseLines(lines);
+
+            // Assert
+            result.Errors.ShouldBeEmptyWithFeedback();
+            result.Warnings.Count.ShouldBe(2);
+            result.Warnings.ShouldContain("Skipped Person Type='FAMS'");
+        }
+
+        [Fact]
+        public void CanParseMarriageLicense()
+        {
+            // Arrange
+            var lines = ResourceHelper.GetLines("GedcomStandard.MARL.ged");
+
+            // Act
+            var result = FileParser.ParseLines(lines);
+
+            // Assert
+            result.Errors.ShouldBeEmptyWithFeedback();
+            result.Warnings.Count.ShouldBe(2);
+            result.Warnings.ShouldContain("Skipped Person Type='FAMS'");
+        }        
+
+        [Fact]
         public void CanParseMultipleSpousalEventOfSameType()
         {
             // Arrange

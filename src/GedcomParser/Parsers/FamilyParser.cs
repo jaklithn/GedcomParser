@@ -63,6 +63,14 @@ namespace GedcomParser.Parsers
                         spousalRelation.MarriageContract.Add(resultContainer.ParseDatePlace(chunk));
                         break;
 
+                    case "MARB":
+                        spousalRelation.MarriageBann.Add(resultContainer.ParseDatePlace(chunk));
+                        break;
+
+                    case "MARL":
+                        spousalRelation.MarriageLicense.Add(resultContainer.ParseDatePlace(chunk));
+                        break;
+
                     case "ENGA":
                         spousalRelation.Engagement.Add(resultContainer.ParseDatePlace(chunk));
                         break;
@@ -116,6 +124,8 @@ namespace GedcomParser.Parsers
                     DivorceFiled     = spousalRelation.DivorceFiled,
                     Divorce          = spousalRelation.Divorce,
                     Annulment        = spousalRelation.Annulment,
+                    MarriageBann     = spousalRelation.MarriageBann,
+                    MarriageLicense  = spousalRelation.MarriageLicense,
                     Relation         = relation,
                     Note             = note
                 });
