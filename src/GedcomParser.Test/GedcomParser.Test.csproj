@@ -41,7 +41,6 @@
     <EmbeddedResource Include="Resources\GedcomStandard\DIVF.ged" />
     <EmbeddedResource Include="Resources\GedcomStandard\MARL.ged" />
     <EmbeddedResource Include="Resources\GedcomStandard\MARS.ged" />
-    <EmbeddedResource Include="Resources\GedcomStandard\MultipleSpousalEventsOfSameType.ged" />
     <EmbeddedResource Include="Resources\GedcomStandard\MINIMAL555.GED" />
     <EmbeddedResource Include="Resources\GedcomStandard\REMARR.GED" />
     <EmbeddedResource Include="Resources\GedcomStandard\SSMARR.GED" />

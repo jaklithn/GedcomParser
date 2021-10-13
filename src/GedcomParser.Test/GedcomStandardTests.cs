@@ -220,20 +220,5 @@ namespace GedcomParser.Test
             result.Warnings.Count.ShouldBe(1);
             result.Warnings.ShouldContain("Skipped Person Type='FAMS'");
         }
-
-        [Fact]
-        public void CanParseMultipleSpousalEventsOfSameType()
-        {
-            // Arrange
-            var lines = ResourceHelper.GetLines("GedcomStandard.MultipleSpousalEventsOfSameType.ged");
-
-            // Act
-            var result = FileParser.ParseLines(lines);
-
-            // Assert
-            result.Errors.ShouldBeEmptyWithFeedback();
-            result.Warnings.Count.ShouldBe(1);
-            result.Warnings.ShouldContain("Skipped Person Type='FAMS'");
-        }
     }
 }

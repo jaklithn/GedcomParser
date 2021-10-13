@@ -346,7 +346,7 @@ namespace GedcomParser.Test
         public void CanParseMultipleSpousalEventsOfSameType()
         {
             // Arrange
-            var lines = ResourceHelper.GetLines("GedcomStandard.MultipleSpousalEventsOfSameType.ged");
+            var lines = ResourceHelper.GetLines("CustomSample.MultipleSpousalEventsOfSameType.ged");
 
             // Act
             var result = FileParser.ParseLines(lines);
