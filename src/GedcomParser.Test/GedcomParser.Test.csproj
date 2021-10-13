@@ -31,8 +31,10 @@
     <EmbeddedResource Include="Resources\GedcomStandard\555SAMPLE16BE.GED" />
     <EmbeddedResource Include="Resources\GedcomStandard\555SAMPLE16LE.GED" />
     <EmbeddedResource Include="Resources\GedcomStandard\ANNUL.ged" />
+    <EmbeddedResource Include="Resources\GedcomStandard\MARB.ged" />
     <EmbeddedResource Include="Resources\GedcomStandard\MARC.ged" />
     <EmbeddedResource Include="Resources\GedcomStandard\DIVF.ged" />
+    <EmbeddedResource Include="Resources\GedcomStandard\MARL.ged" />
     <EmbeddedResource Include="Resources\GedcomStandard\MARS.ged" />
     <EmbeddedResource Include="Resources\GedcomStandard\MINIMAL555.GED" />
     <EmbeddedResource Include="Resources\GedcomStandard\REMARR.GED" />

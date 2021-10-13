@@ -258,6 +258,40 @@ namespace GedcomParser.Test
         }
 
         [Fact]
+        public void CanParseMarriageBannEvents()
+        {
+            //Arrange
+            var lines = ResourceHelper.GetLines("CustomSample.MultipleEvents.ged");
+
+            //Act
+            var result = FileParser.ParseLines(lines);
+
+            //Assert
+            result.Errors.ShouldBeEmptyWithFeedback();
+            result.Warnings.ShouldContain("Skipped Person Type='FAMS'");
+
+            Assert.Collection(result.SpouseRelations, spousal => { Assert.Equal("Travis", spousal.From.FirstName.Trim()); Assert.NotNull(spousal.MarriageBann); });
+
+        }
+
+        [Fact]
+        public void CanParseMarriageLicenseEvents()
+        {
+            //Arrange
+            var lines = ResourceHelper.GetLines("CustomSample.MultipleEvents.ged");
+
+            //Act
+            var result = FileParser.ParseLines(lines);
+
+            //Assert
+            result.Errors.ShouldBeEmptyWithFeedback();
+            result.Warnings.ShouldContain("Skipped Person Type='FAMS'");
+
+            Assert.Collection(result.SpouseRelations, spousal => { Assert.Equal("Travis", spousal.From.FirstName.Trim()); Assert.NotNull(spousal.MarriageLicense); });
+
+        }
+
+        [Fact]
         public void CanParseMarriageSettlementEvents()
         {
             //Arrange
