@@ -71,6 +71,10 @@ namespace GedcomParser.Parsers
                         spousalRelation.MarriageLicense.Add(resultContainer.ParseDatePlace(chunk));
                         break;
 
+                    case "MARS":
+                        spousalRelation.MarriageSettlement.Add(resultContainer.ParseDatePlace(chunk));
+                        break;
+
                     case "ENGA":
                         spousalRelation.Engagement.Add(resultContainer.ParseDatePlace(chunk));
                         break;
@@ -95,7 +99,6 @@ namespace GedcomParser.Parsers
                     case "FAMS":
                     case "FAMC":
                     case "HIST":
-                    case "MARS":
                     case "NCHI":
                     case "NMR":
                     case "OBJE":
@@ -118,16 +121,17 @@ namespace GedcomParser.Parsers
                     FamilyId = famChunk.Id,
                     From = parents[0],
                     To = parents[1],
-                    Engagement       = spousalRelation.Engagement,
-                    Marriage         = spousalRelation.Marriage,
-                    MarriageContract = spousalRelation.MarriageContract,
-                    DivorceFiled     = spousalRelation.DivorceFiled,
-                    Divorce          = spousalRelation.Divorce,
-                    Annulment        = spousalRelation.Annulment,
-                    MarriageBann     = spousalRelation.MarriageBann,
-                    MarriageLicense  = spousalRelation.MarriageLicense,
-                    Relation         = relation,
-                    Note             = note
+                    Engagement          = spousalRelation.Engagement,
+                    Marriage            = spousalRelation.Marriage,
+                    MarriageContract    = spousalRelation.MarriageContract,
+                    MarriageSettlement  = spousalRelation.MarriageSettlement,
+                    DivorceFiled        = spousalRelation.DivorceFiled,
+                    Divorce             = spousalRelation.Divorce,
+                    Annulment           = spousalRelation.Annulment,
+                    MarriageBann        = spousalRelation.MarriageBann,
+                    MarriageLicense     = spousalRelation.MarriageLicense,
+                    Relation            = relation,
+                    Note                = note
                 });
             }
 

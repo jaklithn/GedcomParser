@@ -187,7 +187,7 @@ namespace GedcomParser.Test
 
             // Assert
             result.Errors.ShouldBeEmptyWithFeedback();
-            result.Warnings.Count.ShouldBe(2);
+            result.Warnings.Count.ShouldBe(1);
             result.Warnings.ShouldContain("Skipped Person Type='FAMS'");
         }
 
@@ -202,9 +202,24 @@ namespace GedcomParser.Test
 
             // Assert
             result.Errors.ShouldBeEmptyWithFeedback();
-            result.Warnings.Count.ShouldBe(2);
+            result.Warnings.Count.ShouldBe(1);
             result.Warnings.ShouldContain("Skipped Person Type='FAMS'");
         }        
+
+        [Fact]
+        public void CanParseMarriageSettlement()
+        {
+            // Arrange
+            var lines = ResourceHelper.GetLines("GedcomStandard.MARS.ged");
+
+            // Act
+            var result = FileParser.ParseLines(lines);
+
+            // Assert
+            result.Errors.ShouldBeEmptyWithFeedback();
+            result.Warnings.Count.ShouldBe(1);
+            result.Warnings.ShouldContain("Skipped Person Type='FAMS'");
+        }
 
         [Fact]
         public void CanParseMultipleSpousalEventsOfSameType()

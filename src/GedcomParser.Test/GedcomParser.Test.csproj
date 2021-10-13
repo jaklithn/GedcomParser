@@ -6,6 +6,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\CustomSample\MultipleSpousalEventsOfSameType.ged" />
+  </ItemGroup>
+	
+  <ItemGroup>
     <ProjectReference Include="..\GedcomParser\GedcomParser.csproj" />
   </ItemGroup> 
 
@@ -22,6 +26,7 @@
   <ItemGroup>
     <EmbeddedResource Include="Resources\CustomSample\Kennedy.ged" />
     <EmbeddedResource Include="Resources\CustomSample\MultipleEvents.ged" />
+    <EmbeddedResource Include="Resources\CustomSample\MultipleSpousalEventsOfSameType.ged" />
     <EmbeddedResource Include="Resources\CustomSample\Stefan.ged" />
     <EmbeddedResource Include="Resources\CustomSample\Windsor.ged" />
   </ItemGroup>  
@@ -35,6 +40,7 @@
     <EmbeddedResource Include="Resources\GedcomStandard\MARC.ged" />
     <EmbeddedResource Include="Resources\GedcomStandard\DIVF.ged" />
     <EmbeddedResource Include="Resources\GedcomStandard\MARL.ged" />
+    <EmbeddedResource Include="Resources\GedcomStandard\MARS.ged" />
     <EmbeddedResource Include="Resources\GedcomStandard\MultipleSpousalEventsOfSameType.ged" />
     <EmbeddedResource Include="Resources\GedcomStandard\MINIMAL555.GED" />
     <EmbeddedResource Include="Resources\GedcomStandard\REMARR.GED" />

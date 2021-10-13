@@ -18,14 +18,15 @@ namespace GedcomParser.Entities
 
     public class SpouseRelation : Relation
     {
-        public List<DatePlace> Engagement       { get; set; } = new List<DatePlace>();
-        public List<DatePlace> Marriage         { get; set; } = new List<DatePlace>();
-        public List<DatePlace> MarriageContract { get; set; } = new List<DatePlace>();
-        public List<DatePlace> Divorce          { get; set; } = new List<DatePlace>();
-        public List<DatePlace> DivorceFiled     { get; set; } = new List<DatePlace>();
-        public List<DatePlace> Annulment        { get; set; } = new List<DatePlace>();
-        public List<DatePlace> MarriageBann     { get; set; } = new List<DatePlace>();
-        public List<DatePlace> MarriageLicense  { get; set; } = new List<DatePlace>();
+        public List<DatePlace> Engagement           { get; set; } = new List<DatePlace>();
+        public List<DatePlace> Marriage             { get; set; } = new List<DatePlace>();
+        public List<DatePlace> MarriageContract     { get; set; } = new List<DatePlace>();
+        public List<DatePlace> MarriageSettlement   { get; set; } = new List<DatePlace>();
+        public List<DatePlace> Divorce              { get; set; } = new List<DatePlace>();
+        public List<DatePlace> DivorceFiled         { get; set; } = new List<DatePlace>();
+        public List<DatePlace> Annulment            { get; set; } = new List<DatePlace>();
+        public List<DatePlace> MarriageBann         { get; set; } = new List<DatePlace>();
+        public List<DatePlace> MarriageLicense      { get; set; } = new List<DatePlace>();
         public string Relation { get; set; }
         public string Note { get; set; }
     }
