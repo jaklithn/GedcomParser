@@ -207,10 +207,10 @@ namespace GedcomParser.Test
         }        
 
         [Fact]
-        public void CanParseMultipleSpousalEventOfSameType()
+        public void CanParseMultipleSpousalEventsOfSameType()
         {
             // Arrange
-            var lines = ResourceHelper.GetLines("GedcomStandard.Mark Family Tree.ged");
+            var lines = ResourceHelper.GetLines("GedcomStandard.MultipleSpousalEventsOfSameType.ged");
 
             // Act
             var result = FileParser.ParseLines(lines);
