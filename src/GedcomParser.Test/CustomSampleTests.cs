@@ -290,5 +290,26 @@ namespace GedcomParser.Test
             Assert.Collection(result.SpouseRelations, spousal => { Assert.Equal("Travis", spousal.From.FirstName.Trim()); Assert.NotNull(spousal.MarriageLicense); });
 
         }
+
+        [Fact]
+        public void CanParseMultipleSpousalEventsOfSameType()
+        {
+            // Arrange
+            var lines = ResourceHelper.GetLines("GedcomStandard.MultipleSpousalEventsOfSameType.ged");
+
+            // Act
+            var result = FileParser.ParseLines(lines);
+
+            //Assert
+            result.Errors.ShouldBeEmptyWithFeedback();
+            result.Warnings.ShouldContain("Skipped Person Type='FAMS'");
+
+            Assert.Collection(result.SpouseRelations, spousal => { Assert.Equal("Charlie", spousal.From.FirstName.Trim());
+                                                                   Assert.Equal("Lily", spousal.To.FirstName.Trim());
+                                                                   Assert.Equal(2, spousal.Engagement.Count); 
+                                                                   Assert.Equal(2, spousal.Marriage.Count); });
+
+
+        }
     }
 }
