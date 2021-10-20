@@ -1,4 +1,6 @@
-﻿namespace GedcomParser.Entities
+﻿using System.Collections.Generic;
+
+namespace GedcomParser.Entities
 {
     public abstract class Relation
     {
@@ -16,15 +18,15 @@
 
     public class SpouseRelation : Relation
     {
-        public DatePlace Engagement { get; set; }
-        public DatePlace Marriage { get; set; }
-        public DatePlace MarriageContract { get; set; }
-        public DatePlace MarriageSettlement { get; set; }
-        public DatePlace MarriageBann { get; set; }
-        public DatePlace MarriageLicense { get; set; }
-        public DatePlace Divorce { get; set; }
-        public DatePlace DivorceFiled { get; set; }
-        public DatePlace Annulment { get; set; }
+        public List<DatePlace> Engagement           { get; set; } = new List<DatePlace>();
+        public List<DatePlace> Marriage             { get; set; } = new List<DatePlace>();
+        public List<DatePlace> MarriageContract     { get; set; } = new List<DatePlace>();
+        public List<DatePlace> MarriageSettlement   { get; set; } = new List<DatePlace>();
+        public List<DatePlace> Divorce              { get; set; } = new List<DatePlace>();
+        public List<DatePlace> DivorceFiled         { get; set; } = new List<DatePlace>();
+        public List<DatePlace> Annulment            { get; set; } = new List<DatePlace>();
+        public List<DatePlace> MarriageBann         { get; set; } = new List<DatePlace>();
+        public List<DatePlace> MarriageLicense      { get; set; } = new List<DatePlace>();
         public string Relation { get; set; }
         public string Note { get; set; }
     }

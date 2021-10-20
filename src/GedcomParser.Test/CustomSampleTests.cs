@@ -241,6 +241,41 @@ namespace GedcomParser.Test
         }
 
         [Fact]
+        public void CanParseDescriptionOfSpousalEvents()
+        {
+            //Arrange
+            var lines = ResourceHelper.GetLines("CustomSample.MultipleSpousalEventsOfSameType.ged");
+
+            //Act
+            var result = FileParser.ParseLines(lines);
+
+            var firstPersonInTree = result.SpouseRelations.FirstOrDefault(p => p.From.Id.Trim().Equals("@I252326392761@"));
+
+            var engagementEvents = firstPersonInTree.Engagement;
+            var marriageEvents = firstPersonInTree.Marriage;
+            var divorceEvents = firstPersonInTree.Divorce;
+           
+
+            //Assert
+            result.Errors.ShouldBeEmptyWithFeedback();
+            result.Warnings.ShouldContain("Skipped Person Type='FAMS'");
+
+            Assert.Equal(2, engagementEvents.Count);
+            Assert.Equal(2, marriageEvents.Count);
+            Assert.Single(divorceEvents);
+           
+
+            Assert.Collection(engagementEvents, evt => { Assert.Equal("Engagement event", evt.Description); },
+                                                 evt => { Assert.Equal("This is a second engagement event", evt.Description); });
+
+            Assert.Collection(marriageEvents, evt => { Assert.Equal("This is a marriage event", evt.Description); },
+                                               evt => { Assert.Equal("This is a second marriage event.", evt.Description); });
+
+            Assert.Collection(divorceEvents, evt => { Assert.Equal("This is divorce event", evt.Description); });
+
+        }
+
+        [Fact]
         public void CanParseMarriageContractEvents()
         {
             //Arrange
@@ -305,6 +340,27 @@ namespace GedcomParser.Test
             result.Warnings.ShouldContain("Skipped Person Type='FAMS'");
 
             Assert.Collection(result.SpouseRelations, spousal => { Assert.Equal("Travis", spousal.From.FirstName.Trim()); Assert.NotNull(spousal.MarriageSettlement); });
+        }
+
+        [Fact]
+        public void CanParseMultipleSpousalEventsOfSameType()
+        {
+            // Arrange
+            var lines = ResourceHelper.GetLines("CustomSample.MultipleSpousalEventsOfSameType.ged");
+
+            // Act
+            var result = FileParser.ParseLines(lines);
+
+            //Assert
+            result.Errors.ShouldBeEmptyWithFeedback();
+            result.Warnings.ShouldContain("Skipped Person Type='FAMS'");
+
+            Assert.Collection(result.SpouseRelations, spousal => { Assert.Equal("Charlie", spousal.From.FirstName.Trim());
+                                                                   Assert.Equal("Lily", spousal.To.FirstName.Trim());
+                                                                   Assert.Equal(2, spousal.Engagement.Count); 
+                                                                   Assert.Equal(2, spousal.Marriage.Count); });
+
+
         }
     }
 }
