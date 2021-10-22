@@ -71,6 +71,10 @@ namespace GedcomParser.Parsers
                         spousalRelation.MarriageLicense.Add(resultContainer.ParseDatePlace(chunk));
                         break;
 
+                    case "_SEPR":
+                        spousalRelation.Separation.Add(resultContainer.ParseDatePlace(chunk));
+                        break;
+
                     case "MARS":
                         spousalRelation.MarriageSettlement.Add(resultContainer.ParseDatePlace(chunk));
                         break;
@@ -130,6 +134,7 @@ namespace GedcomParser.Parsers
                     Annulment           = spousalRelation.Annulment,
                     MarriageBann        = spousalRelation.MarriageBann,
                     MarriageLicense     = spousalRelation.MarriageLicense,
+                    Separation          = spousalRelation.Separation,
                     Relation            = relation,
                     Note                = note
                 });
