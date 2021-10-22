@@ -41,7 +41,7 @@
     <EmbeddedResource Include="Resources\GedcomStandard\REMARR.GED" />
     <EmbeddedResource Include="Resources\GedcomStandard\SSMARR.GED" />
     <EmbeddedResource Include="Resources\GedcomStandard\REENGA.GED" />
-    <EmbeddedResource Include="Resources\GedcomStandard\_SEPR.ged" />
+    <EmbeddedResource Include="Resources\GedcomStandard\SEPR.ged" />
   </ItemGroup>   
  
   <ItemGroup>

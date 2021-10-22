@@ -225,7 +225,7 @@ namespace GedcomParser.Test
         public void CanParseSeparation()
         {
             // Arrange
-            var lines = ResourceHelper.GetLines("GedcomStandard._SEPR.ged");
+            var lines = ResourceHelper.GetLines("GedcomStandard.SEPR.ged");
 
             // Act
             var result = FileParser.ParseLines(lines);
