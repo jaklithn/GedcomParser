@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <IsPackable>false</IsPackable>
-  </PropertyGroup>
+  </PropertyGroup>  
 	
   <ItemGroup>
     <ProjectReference Include="..\GedcomParser\GedcomParser.csproj" />
@@ -41,6 +41,7 @@
     <EmbeddedResource Include="Resources\GedcomStandard\REMARR.GED" />
     <EmbeddedResource Include="Resources\GedcomStandard\SSMARR.GED" />
     <EmbeddedResource Include="Resources\GedcomStandard\REENGA.GED" />
+    <EmbeddedResource Include="Resources\GedcomStandard\SEPR.ged" />
   </ItemGroup>   
  
   <ItemGroup>

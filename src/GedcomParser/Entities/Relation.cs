@@ -27,6 +27,7 @@ namespace GedcomParser.Entities
         public List<DatePlace> Annulment            { get; set; } = new List<DatePlace>();
         public List<DatePlace> MarriageBann         { get; set; } = new List<DatePlace>();
         public List<DatePlace> MarriageLicense      { get; set; } = new List<DatePlace>();
+        public List<DatePlace> Separation           { get; set; } = new List<DatePlace>();
         public string Relation { get; set; }
         public string Note { get; set; }
     }

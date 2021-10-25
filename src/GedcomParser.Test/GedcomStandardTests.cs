@@ -220,5 +220,20 @@ namespace GedcomParser.Test
             result.Warnings.Count.ShouldBe(1);
             result.Warnings.ShouldContain("Skipped Person Type='FAMS'");
         }
+
+        [Fact]
+        public void CanParseSeparation()
+        {
+            // Arrange
+            var lines = ResourceHelper.GetLines("GedcomStandard.SEPR.ged");
+
+            // Act
+            var result = FileParser.ParseLines(lines);
+
+            // Assert
+            result.Errors.ShouldBeEmptyWithFeedback();
+            result.Warnings.Count.ShouldBe(1);
+            result.Warnings.ShouldContain("Skipped Person Type='FAMS'");
+        }
     }
 }
