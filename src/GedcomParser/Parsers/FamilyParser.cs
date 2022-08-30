@@ -138,6 +138,16 @@ namespace GedcomParser.Parsers
                     Relation            = relation,
                     Note                = note
                 });
+                resultContainer.SpouseRelations.Add(new SpouseRelation
+                {
+                    FamilyId = famChunk.Id,
+                    From = parents[1],
+                    To = parents[0],
+                    Marriage = marriage,
+                    Divorce = divorce,
+                    Relation = relation,
+                    Note = note
+                });
             }
 
             // Parents / Children
