@@ -27,6 +27,12 @@ namespace GedcomParser.Parsers
                 datePlace.Note = resultContainer.ParseNote(datePlace.Note, note);
             }
 
+            var description = chunk.Data;
+            if(description!=null)
+            {
+                datePlace.Description = description;
+            }
+
             return datePlace;
         }
 

@@ -1,0 +1,66 @@
+0 HEAD
+1 SUBM @SUBM1@
+1 SOUR Ancestry.com Family Trees
+2 NAME Ancestry.com Member Trees
+2 VERS 2021.07
+2 _TREE John Family Tree
+3 RIN 178260169
+3 _ENV prd
+2 CORP Ancestry.com
+3 PHON 801-705-7000
+3 WWW www.ancestry.com
+3 ADDR 1300 West Traverse Parkway
+4 CONT Lehi, UT  84043
+4 CONT USA
+1 DATE 16 Sep 2021
+2 TIME 10:55:43
+1 GEDC
+2 VERS 5.5.1
+2 FORM LINEAGE-LINKED
+1 CHAR UTF-8
+0 @SUBM1@ SUBM
+1 NAME Ancestry.com Member Trees Submitter
+0 @I152318623083@ INDI
+1 NAME Peter /John/
+2 GIVN Peter
+2 SURN John
+1 SEX M
+1 FAMC @F3@
+1 FAMS @F2@
+1 FAMS @F1@
+1 BIRT
+2 DATE 05 Mar 2010
+2 PLAC California, Paulding, Georgia, USA
+0 @I152318623085@ INDI
+1 NAME Sofia /Jones/
+2 GIVN Sofia
+2 SURN Jones
+1 SEX F
+1 FAMS @F2@
+0 @I152318623808@ INDI
+1 NAME Mark /John/
+2 GIVN Mark
+2 SURN John
+1 SEX M
+1 FAMS @F3@
+0 @I152318623857@ INDI
+1 NAME Lily //
+2 GIVN Lily
+1 SEX F
+1 FAMS @F1@
+0 @F1@ FAM
+1 HUSB @I152318623083@
+1 WIFE @I152318623857@
+1 ENGA Second Engagement
+2 DATE 10 Jun 2016
+2 PLAC New Aksu, Aksu, Xinjiang, China
+0 @F2@ FAM
+1 HUSB @I152318623083@
+1 WIFE @I152318623085@
+1 ENGA First Engagement
+2 DATE 10 Jun 2015
+2 PLAC Cali, Valle del Cauca, Colombia
+0 @F3@ FAM
+1 HUSB @I152318623808@
+1 CHIL @I152318623083@
+0 TRLR
