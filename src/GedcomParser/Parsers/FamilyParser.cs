@@ -14,6 +14,7 @@ namespace GedcomParser.Parsers
             var spousalRelation = new SpouseRelation();
             string relation = null;
             string note = null;
+            string uid = null;
             var parents = new List<Person>();
             var children = new List<Person>();
 
@@ -21,6 +22,10 @@ namespace GedcomParser.Parsers
             {
                 switch (chunk.Type)
                 {
+                    case "_UID":
+                        uid = chunk.Data;
+                        break;
+
                     case "CHIL":
                         var child = resultContainer.Persons.SingleOrDefault(p => p.Id == chunk.Reference);
                         if (child != null)
@@ -97,6 +102,7 @@ namespace GedcomParser.Parsers
                         break;
 
                     // Deliberately skipped for now
+                    case "_UPD":
                     case "CHAN":
                     case "DSCR":
                     case "EVEN":
@@ -107,6 +113,7 @@ namespace GedcomParser.Parsers
                     case "NMR":
                     case "OBJE":
                     case "PAGE":
+                    case "RIN":
                     case "SOUR":
                         resultContainer.Warnings.Add($"Skipped Family Type='{chunk.Type}'");
                         break;
@@ -123,6 +130,7 @@ namespace GedcomParser.Parsers
                 resultContainer.SpouseRelations.Add(new SpouseRelation
                 {
                     FamilyId = famChunk.Id,
+                    FamilyUid = uid,
                     From = parents[0],
                     To = parents[1],
                     Engagement          = spousalRelation.Engagement,
@@ -141,6 +149,7 @@ namespace GedcomParser.Parsers
                 resultContainer.SpouseRelations.Add(new SpouseRelation
                 {
                     FamilyId = famChunk.Id,
+                    FamilyUid = uid,
                     From = parents[1],
                     To = parents[0],
                     Marriage = spousalRelation.Marriage,
