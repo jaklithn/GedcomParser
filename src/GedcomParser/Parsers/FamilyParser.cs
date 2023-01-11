@@ -97,6 +97,7 @@ namespace GedcomParser.Parsers
                         break;
 
                     // Deliberately skipped for now
+                    case "_UPD":
                     case "CHAN":
                     case "DSCR":
                     case "EVEN":
