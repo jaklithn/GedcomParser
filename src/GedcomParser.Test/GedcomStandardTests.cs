@@ -99,6 +99,53 @@ namespace GedcomParser.Test
         }
 
         [Fact]
+        public void CanParseReEngagement()
+        {
+            // Arrange
+            var lines = ResourceHelper.GetLines("GedcomStandard.REENGA.GED");
+
+            // Act
+            var result = FileParser.ParseLines(lines);
+
+            // Assert
+            result.Errors.ShouldBeEmptyWithFeedback();
+            result.Warnings.Count.ShouldBe(2);
+            result.Warnings.ShouldContain("Skipped Person Type='FAMS'");
+            result.Warnings.ShouldContain("Skipped Person Type='FAMC'");
+        }
+
+        [Fact]
+        public void CanParseDivorceFiled()
+        {
+            // Arrange
+            var lines = ResourceHelper.GetLines("GedcomStandard.DIVF.ged");
+
+            // Act
+            var result = FileParser.ParseLines(lines);
+
+            // Assert
+            result.Errors.ShouldBeEmptyWithFeedback();
+            result.Warnings.Count.ShouldBe(2);
+            result.Warnings.ShouldContain("Skipped Person Type='FAMS'");
+            result.Warnings.ShouldContain("Skipped Person Type='FAMC'");
+        }
+
+        [Fact]
+        public void CanParseAnnulmentFiled()
+        {
+            // Arrange
+            var lines = ResourceHelper.GetLines("GedcomStandard.ANNUL.ged");
+
+            // Act
+            var result = FileParser.ParseLines(lines);
+
+            // Assert
+            result.Errors.ShouldBeEmptyWithFeedback();
+            result.Warnings.Count.ShouldBe(2);
+            result.Warnings.ShouldContain("Skipped Person Type='FAMS'");
+            result.Warnings.ShouldContain("Skipped Person Type='FAMC'");
+        }
+        [Fact]
         public void CanParseSameSexMarriage()
         {
             // Arrange
@@ -114,5 +161,79 @@ namespace GedcomParser.Test
             result.Warnings.ShouldContain("Skipped Person Type='FAMS'");
         }
 
+        [Fact]
+        public void CanParseMarriageContract()
+        {
+            // Arrange
+            var lines = ResourceHelper.GetLines("GedcomStandard.MARC.ged");
+
+            // Act
+            var result = FileParser.ParseLines(lines);
+
+            // Assert
+            result.Errors.ShouldBeEmptyWithFeedback();
+            result.Warnings.Count.ShouldBe(1);
+            result.Warnings.ShouldContain("Skipped Person Type='FAMS'");
+        }
+
+        [Fact]
+        public void CanParseMarriageBann()
+        {
+            // Arrange
+            var lines = ResourceHelper.GetLines("GedcomStandard.MARB.ged");
+
+            // Act
+            var result = FileParser.ParseLines(lines);
+
+            // Assert
+            result.Errors.ShouldBeEmptyWithFeedback();
+            result.Warnings.Count.ShouldBe(1);
+            result.Warnings.ShouldContain("Skipped Person Type='FAMS'");
+        }
+
+        [Fact]
+        public void CanParseMarriageLicense()
+        {
+            // Arrange
+            var lines = ResourceHelper.GetLines("GedcomStandard.MARL.ged");
+
+            // Act
+            var result = FileParser.ParseLines(lines);
+
+            // Assert
+            result.Errors.ShouldBeEmptyWithFeedback();
+            result.Warnings.Count.ShouldBe(1);
+            result.Warnings.ShouldContain("Skipped Person Type='FAMS'");
+        }        
+
+        [Fact]
+        public void CanParseMarriageSettlement()
+        {
+            // Arrange
+            var lines = ResourceHelper.GetLines("GedcomStandard.MARS.ged");
+
+            // Act
+            var result = FileParser.ParseLines(lines);
+
+            // Assert
+            result.Errors.ShouldBeEmptyWithFeedback();
+            result.Warnings.Count.ShouldBe(1);
+            result.Warnings.ShouldContain("Skipped Person Type='FAMS'");
+        }
+
+        [Fact]
+        public void CanParseSeparation()
+        {
+            // Arrange
+            var lines = ResourceHelper.GetLines("GedcomStandard.SEPR.ged");
+
+            // Act
+            var result = FileParser.ParseLines(lines);
+
+            // Assert
+            result.Errors.ShouldBeEmptyWithFeedback();
+            result.Warnings.Count.ShouldBe(1);
+            result.Warnings.ShouldContain("Skipped Person Type='FAMS'");
+        }
     }
 }

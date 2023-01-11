@@ -1,0 +1,196 @@
+0 HEAD
+1 SUBM @SUBM1@
+1 SOUR Ancestry.com Family Trees
+2 NAME Ancestry.com Member Trees
+2 VERS 2021.07
+2 _TREE Allen Family Tree
+3 RIN 178131146
+3 _ENV prd
+2 CORP Ancestry.com
+3 PHON 801-705-7000
+3 WWW www.ancestry.com
+3 ADDR 1300 West Traverse Parkway
+4 CONT Lehi, UT  84043
+4 CONT USA
+1 DATE 27 Sep 2021
+2 TIME 09:30:48
+1 GEDC
+2 VERS 5.5.1
+2 FORM LINEAGE-LINKED
+1 CHAR UTF-8
+0 @SUBM1@ SUBM
+1 NAME Ancestry.com Member Trees Submitter
+0 @I222315230980@ INDI
+1 NAME Kyle /Allen/
+2 GIVN Kyle
+2 SURN Allen
+1 SEX M
+1 FAMC @F1@
+1 FAMS @F4@
+1 FAMS @F3@
+1 FAMS @F2@
+1 FAMS @F5@
+1 BIRT
+2 DATE 1987
+2 PLAC USA
+1 CENS This is a Census event.
+2 DATE 1990
+2 PLAC Kelan, Shanxi, China
+1 EVEN This is a Arrival event.
+2 TYPE Arrival
+2 DATE 1991
+2 PLAC Yetan, Heyuan, Guangdong, China
+1 EVEN This is a departure event.
+2 TYPE Departure
+2 DATE 1992
+2 PLAC Retalhuleu, Guatemala
+1 _DEST This is a Destination event.
+2 DATE 1994
+2 PLAC Qeshlaghak, Badghis, Afghanistan
+1 EMIG This is a Emigration event.
+2 DATE 1995
+2 PLAC Terengganu, Malaysia
+1 IMMI This is a Immigration event.
+2 DATE 1996
+2 PLAC Refaitpur, Khulna, Bangladesh
+1 NATU This is a Naturalization event.
+2 DATE 1998
+2 PLAC Yerangatup, Western Australia, Australia
+1 RESI This is a Residence event.
+2 DATE 2000
+2 PLAC Gita, Stara Zagora, Bulgaria
+0 @I222315230982@ INDI
+1 NAME David /Allen/
+2 GIVN David
+2 SURN Allen
+1 SEX M
+1 FAMC @F6@
+1 FAMS @F1@
+1 BIRT
+2 DATE 1970
+0 @I222315232280@ INDI
+1 NAME Jorja /Fox/
+2 GIVN Jorja
+2 SURN Fox
+1 SEX F
+1 FAMC @F7@
+1 FAMS @F1@
+1 BIRT
+2 DATE 1975
+2 PLAC Retalhuleu, Guatemala
+0 @I222315232372@ INDI
+1 NAME Anna /Mikami/
+2 GIVN Anna
+2 SURN Mikami
+1 SEX F
+1 FAMS @F2@
+1 BIRT
+2 DATE 1988
+0 @I222315232403@ INDI
+1 NAME Lily /Lumpkin/
+2 GIVN Lily
+2 SURN Lumpkin
+1 SEX F
+1 FAMS @F3@
+1 BIRT
+2 DATE 1988
+2 PLAC West Virginia, USA
+0 @I222315232428@ INDI
+1 NAME Cleo /Fraser/
+2 GIVN Cleo
+2 SURN Fraser
+1 SEX F
+1 FAMS @F4@
+1 BIRT
+2 DATE 1989
+2 PLAC Refugio County, Texas, USA
+0 @I222318563071@ INDI
+1 NAME Adrian /Allen/
+2 GIVN Adrian
+2 SURN Allen
+1 SEX M
+1 FAMS @F6@
+0 @I222318563245@ INDI
+1 NAME Patrica //
+2 GIVN Patrica
+1 SEX F
+1 FAMS @F6@
+0 @I222318589863@ INDI
+1 NAME Nick /Fox/
+2 GIVN Nick
+2 SURN Fox
+1 SEX M
+1 FAMS @F7@
+1 DEAT
+2 DATE 13 sep 2021
+0 @I222318589923@ INDI
+1 NAME Charlotte /Rose/
+2 GIVN Charlotte
+2 SURN Rose
+1 SEX F
+1 FAMS @F7@
+1 BIRT
+2 DATE 18 Dec 1955
+0 @I222318794445@ INDI
+1 NAME Summer /Blake/
+2 GIVN Summer
+2 SURN Blake
+1 SEX F
+1 FAMS @F5@
+0 @F1@ FAM
+1 HUSB @I222315230982@
+1 WIFE @I222315232280@
+1 CHIL @I222315230980@
+0 @F2@ FAM
+1 HUSB @I222315230980@
+1 WIFE @I222315232372@
+1 ENGA
+2 DATE 2015
+1 MARR This is  a marriage event.
+2 DATE 2015
+2 PLAC Terengganu, Malaysia
+1 DIV This is  a divorce event.
+2 DATE 2017
+2 PLAC Gera, Thuringia, Germany
+0 @F3@ FAM
+1 HUSB @I222315230980@
+1 WIFE @I222315232403@
+1 ENGA
+2 DATE 2013
+2 PLAC Riga Davanti, Bolzano, Trentino-Alto Adige, Italy
+1 MARR This is  a marriage event.
+2 DATE 2013
+2 PLAC Ten Boer, Groningen, Netherlands
+1 DIV This is  a divorce event.
+2 DATE 2014
+2 PLAC Setauket, Suffolk, New York, USA
+0 @F4@ FAM
+1 HUSB @I222315230980@
+1 WIFE @I222315232428@
+1 ENGA
+2 DATE 2010
+2 PLAC Port Elizabeth, Eastern Cape, South Africa
+1 MARR This is  a marriage event.
+2 DATE 2010
+2 PLAC Qashqah, Faryab, Afghanistan
+1 DIV This is  a divorce event.
+2 DATE 2012
+2 PLAC Decatur County, Georgia, USA
+1 DIVF This is a divorce filed
+2 DATE 05 May 2012
+2 PLAC Utah County, Utah, USA
+0 @F5@ FAM
+1 HUSB @I222315230980@
+1 WIFE @I222318794445@
+1 ENGA This is an Engagement event with a spouse named Summer Blake. The Engagement event took place in the year 2017 when Kyle divorced her former and third spouse named Lily. The engagement event/ceremony of Kyle and Summer Blake took place in Parilla,Austraila
+2 DATE 2017
+2 PLAC Parilla, South Australia, Australia
+0 @F6@ FAM
+1 HUSB @I222318563071@
+1 WIFE @I222318563245@
+1 CHIL @I222315230982@
+0 @F7@ FAM
+1 HUSB @I222318589863@
+1 WIFE @I222318589923@
+1 CHIL @I222315232280@
+0 TRLR

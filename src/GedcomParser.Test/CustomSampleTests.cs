@@ -44,7 +44,7 @@ namespace GedcomParser.Test
             result.Errors.ShouldContain("Failed to handle top level Type='_GRP'");
             result.Errors.ShouldContain("Failed to handle top level Type='_PLC'");
             // result.Warnings.ShouldBeEmptyWithFeedback();
-            result.Warnings.Count.ShouldBe(18);
+            result.Warnings.Count.ShouldBe(17);
         }
 
         [Fact]
@@ -67,7 +67,7 @@ namespace GedcomParser.Test
         public void CanParseMultipleImmigrationEventsFamily()
         {
             // Arrange
-            var lines = ResourceHelper.GetLines("CustomSample.MultipleImmigrationEvents.ged");
+            var lines = ResourceHelper.GetLines("CustomSample.MultipleEvents.ged");
 
             // Act
             var result = FileParser.ParseLines(lines);
@@ -83,7 +83,7 @@ namespace GedcomParser.Test
         public void CanParseMultipleEmigrationEventsFamily()
         {
             // Arrange
-            var lines = ResourceHelper.GetLines("CustomSample.MultipleEmigrationEvents.ged");
+            var lines = ResourceHelper.GetLines("CustomSample.MultipleEvents.ged");
 
             // Act
             var result = FileParser.ParseLines(lines);
@@ -93,6 +93,291 @@ namespace GedcomParser.Test
             result.Warnings.ShouldContain("Skipped Person Type='FAMS'");
             Assert.Collection(result.Persons, person => { Assert.Equal("Travis", person.FirstName.Trim()); Assert.Equal(2, person.Emigrated.Count); },
                                               person => { Assert.Equal("Niles", person.FirstName.Trim()); Assert.Empty(person.Emigrated); });
+        }
+
+        [Fact]
+        public void CanParseMultipleResidenceEventsFamily()
+        {
+            //Arrange
+            var lines = ResourceHelper.GetLines("CustomSample.MultipleEvents.ged");
+
+            //Act
+            var result = FileParser.ParseLines(lines);
+
+            //Assert
+            result.Errors.ShouldBeEmptyWithFeedback();
+            result.Warnings.ShouldContain("Skipped Person Type='FAMS'");
+            Assert.Collection(result.Persons, person => { Assert.Equal("Travis", person.FirstName.Trim()); Assert.Equal(3, person.Residence.Count); },
+                person => { Assert.Equal("Niles", person.FirstName.Trim()); Assert.Empty(person.Residence); });
+
+        }
+
+        [Fact]
+        public void CanParseMultipleMigrationEvents()
+        {
+            // Arrange
+            var lines = ResourceHelper.GetLines("CustomSample.MultipleEvents.ged");
+
+            // Act
+            var result = FileParser.ParseLines(lines);
+
+            // Assert
+            result.Errors.ShouldBeEmptyWithFeedback();
+            result.Warnings.ShouldContain("Skipped Person Type='FAMS'");
+            Assert.Collection(result.Persons, person => { Assert.Equal("Travis", person.FirstName.Trim()); Assert.Equal(3, person.Events["arrival"].Count);
+                                                          Assert.Equal(2, person.Events["departure"].Count); },
+                                              person => { Assert.Equal("Niles", person.FirstName.Trim()); Assert.Empty(person.Events); });
+            Assert.Collection(result.Persons, person => { Assert.Equal("20 Aug 2000", person.Events["arrival"].FirstOrDefault().Date);
+                                                          Assert.Equal("Nevada City, Merced, California, USA", person.Events["arrival"].FirstOrDefault().Place);
+                                                          Assert.Equal("12 Jul 2005", person.Events["departure"].FirstOrDefault().Date);
+                                                          Assert.Equal("California Hot Springs, Tulare, California, USA", person.Events["departure"].FirstOrDefault().Place);
+                                                        },
+                                              person => { Assert.Empty(person.Events); });
+        }
+
+        [Fact]
+        public void CanParseMultipleNaturalizationEventsFamily()
+        {
+            //Arrange
+            var lines = ResourceHelper.GetLines("CustomSample.MultipleEvents.ged");
+
+            //Act
+            var result = FileParser.ParseLines(lines);
+
+            //Assert
+            result.Errors.ShouldBeEmptyWithFeedback();
+            result.Warnings.ShouldContain("Skipped Person Type='FAMS'");
+            Assert.Collection(result.Persons, person => { Assert.Equal("Travis", person.FirstName.Trim()); Assert.Equal(2, person.BecomingCitizen.Count); },
+                person => { Assert.Equal("Niles", person.FirstName.Trim()); Assert.Equal(2, person.BecomingCitizen.Count); });
+        }
+
+        [Fact]
+        public void CanParseMultipleCensusEventsFamily()
+        {
+            //Arrange
+            var lines = ResourceHelper.GetLines("CustomSample.MultipleEvents.ged");
+
+            //Act
+            var result = FileParser.ParseLines(lines);
+
+            //Assert
+            result.Errors.ShouldBeEmptyWithFeedback();
+            result.Warnings.ShouldContain("Skipped Person Type='FAMS'");
+            Assert.Collection(result.Persons, person => { Assert.Equal("Travis", person.FirstName.Trim()); Assert.Equal(2, person.Census.Count); },
+                person => { Assert.Equal("Niles", person.FirstName.Trim()); Assert.Empty(person.Census); });
+
+        }
+
+        [Fact]
+        public void CanParseMultipleDestinationEventsFamily()
+        {
+            //Arrange
+            var lines = ResourceHelper.GetLines("CustomSample.MultipleEvents.ged");
+
+            //Act
+            var result = FileParser.ParseLines(lines);
+
+            //Assert
+            result.Errors.ShouldBeEmptyWithFeedback();
+            result.Warnings.ShouldContain("Skipped Person Type='FAMS'");
+            Assert.Collection(result.Persons, person => { Assert.Equal("Travis", person.FirstName.Trim()); Assert.Equal(2, person.Destination.Count); },
+                person => { Assert.Equal("Niles", person.FirstName.Trim()); Assert.Equal(2,person.Destination.Count); });
+
+        }
+
+        [Fact]
+        public void CanParseDescriptionOfEvents()
+        {
+            //Arrange
+            var lines = ResourceHelper.GetLines("CustomSample.MultipleEvents.ged");
+
+            //Act
+            var result = FileParser.ParseLines(lines);
+
+            var firstPersonInTree = result.Persons.FirstOrDefault(p => p.Id.Trim().Equals("@I272301164062@"));
+            
+            var immigrationEvents       = firstPersonInTree.Immigrated;
+            var emigrationEvents        = firstPersonInTree.Emigrated;
+            var residenceEvents         = firstPersonInTree.Residence;
+            var naturalizationEvents    = firstPersonInTree.BecomingCitizen;
+            var destinationEvents       = firstPersonInTree.Destination;
+            var migrationEvents         = firstPersonInTree.Events;
+
+            //Assert
+            result.Errors.ShouldBeEmptyWithFeedback();
+            result.Warnings.ShouldContain("Skipped Person Type='FAMS'");
+
+            Assert.Equal(2, immigrationEvents.Count);
+            Assert.Equal(2, emigrationEvents.Count);
+            Assert.Equal(3, residenceEvents.Count);
+            Assert.Equal(2, naturalizationEvents.Count);
+            Assert.Equal(2, destinationEvents.Count);
+            Assert.Equal(3, migrationEvents["arrival"].Count);
+            Assert.Equal(2, migrationEvents["departure"].Count);
+
+            Assert.Collection(immigrationEvents, evt => { Assert.Equal("Shifted to USA", evt.Description); },
+                                                 evt => { Assert.Equal("Shifted to England", evt.Description); });
+
+            Assert.Collection(emigrationEvents, evt => { Assert.Equal("Emigrated from Leeds", evt.Description); },
+                                               evt => { Assert.Equal("Emigrated from Utah", evt.Description); });
+
+            Assert.Collection(residenceEvents, evt => { Assert.Equal("Resident of Nevada", evt.Description); },
+                                               evt => { Assert.Equal("Resident of Utah", evt.Description); },
+                                               evt => { Assert.Equal("Resident of Leeds", evt.Description); });
+
+            Assert.Collection(naturalizationEvents, evt => { Assert.Equal("Citizen of Manchester", evt.Description); },
+                                                    evt => { Assert.Equal("Citizen of Leeds", evt.Description); });
+
+            Assert.Collection(migrationEvents["arrival"], evt => { Assert.Equal("Arrival to Nevada", evt.Description); },
+                                                          evt => { Assert.Equal("Arrival to New York", evt.Description); },
+                                                          evt => { Assert.Equal("Arrival to Italy", evt.Description); });
+
+            Assert.Collection(migrationEvents["departure"], evt => { Assert.Equal("Departure to California", evt.Description); },
+                                                            evt => { Assert.Equal("Departure from Utah", evt.Description); });
+
+            Assert.Collection(destinationEvents, evt => { Assert.Equal("California Mesa, Delta", evt.Description); },
+                                                    evt => { Assert.Equal("Washington County, Alabama", evt.Description); });
+
+        }
+
+        [Fact]
+        public void CanParseDescriptionOfSpousalEvents()
+        {
+            //Arrange
+            var lines = ResourceHelper.GetLines("CustomSample.MultipleSpousalEventsOfSameType.ged");
+
+            //Act
+            var result = FileParser.ParseLines(lines);
+
+            var firstPersonInTree = result.SpouseRelations.FirstOrDefault(p => p.From.Id.Trim().Equals("@I252326392761@"));
+
+            var engagementEvents = firstPersonInTree.Engagement;
+            var marriageEvents = firstPersonInTree.Marriage;
+            var divorceEvents = firstPersonInTree.Divorce;
+           
+
+            //Assert
+            result.Errors.ShouldBeEmptyWithFeedback();
+            result.Warnings.ShouldContain("Skipped Person Type='FAMS'");
+
+            Assert.Equal(2, engagementEvents.Count);
+            Assert.Equal(2, marriageEvents.Count);
+            Assert.Single(divorceEvents);
+           
+
+            Assert.Collection(engagementEvents, evt => { Assert.Equal("Engagement event", evt.Description); },
+                                                 evt => { Assert.Equal("This is a second engagement event", evt.Description); });
+
+            Assert.Collection(marriageEvents, evt => { Assert.Equal("This is a marriage event", evt.Description); },
+                                               evt => { Assert.Equal("This is a second marriage event.", evt.Description); });
+
+            Assert.Collection(divorceEvents, evt => { Assert.Equal("This is divorce event", evt.Description); });
+
+        }
+
+        [Fact]
+        public void CanParseMarriageContractEvents()
+        {
+            //Arrange
+            var lines = ResourceHelper.GetLines("CustomSample.MultipleEvents.ged");
+
+            //Act
+            var result = FileParser.ParseLines(lines);
+
+            //Assert
+            result.Errors.ShouldBeEmptyWithFeedback();
+            result.Warnings.ShouldContain("Skipped Person Type='FAMS'");
+
+            Assert.Collection(result.SpouseRelations, spousal => { Assert.Equal("Travis", spousal.From.FirstName.Trim()); Assert.NotNull(spousal.MarriageContract); });
+
+        }
+
+        [Fact]
+        public void CanParseMarriageBannEvents()
+        {
+            //Arrange
+            var lines = ResourceHelper.GetLines("CustomSample.MultipleEvents.ged");
+
+            //Act
+            var result = FileParser.ParseLines(lines);
+
+            //Assert
+            result.Errors.ShouldBeEmptyWithFeedback();
+            result.Warnings.ShouldContain("Skipped Person Type='FAMS'");
+
+            Assert.Collection(result.SpouseRelations, spousal => { Assert.Equal("Travis", spousal.From.FirstName.Trim()); Assert.NotNull(spousal.MarriageBann); });
+
+        }
+
+        [Fact]
+        public void CanParseMarriageLicenseEvents()
+        {
+            //Arrange
+            var lines = ResourceHelper.GetLines("CustomSample.MultipleEvents.ged");
+
+            //Act
+            var result = FileParser.ParseLines(lines);
+
+            //Assert
+            result.Errors.ShouldBeEmptyWithFeedback();
+            result.Warnings.ShouldContain("Skipped Person Type='FAMS'");
+
+            Assert.Collection(result.SpouseRelations, spousal => { Assert.Equal("Travis", spousal.From.FirstName.Trim()); Assert.NotNull(spousal.MarriageLicense); });
+
+        }
+
+        [Fact]
+        public void CanParseMarriageSettlementEvents()
+        {
+            //Arrange
+            var lines = ResourceHelper.GetLines("CustomSample.MultipleEvents.ged");
+
+            //Act
+            var result = FileParser.ParseLines(lines);
+
+            //Assert
+            result.Errors.ShouldBeEmptyWithFeedback();
+            result.Warnings.ShouldContain("Skipped Person Type='FAMS'");
+
+            Assert.Collection(result.SpouseRelations, spousal => { Assert.Equal("Travis", spousal.From.FirstName.Trim()); Assert.NotNull(spousal.MarriageSettlement); });
+        }
+
+        [Fact]
+        public void CanParseMultipleSpousalEventsOfSameType()
+        {
+            // Arrange
+            var lines = ResourceHelper.GetLines("CustomSample.MultipleSpousalEventsOfSameType.ged");
+
+            // Act
+            var result = FileParser.ParseLines(lines);
+
+            //Assert
+            result.Errors.ShouldBeEmptyWithFeedback();
+            result.Warnings.ShouldContain("Skipped Person Type='FAMS'");
+
+            Assert.Collection(result.SpouseRelations, spousal => { Assert.Equal("Charlie", spousal.From.FirstName.Trim());
+                                                                   Assert.Equal("Lily", spousal.To.FirstName.Trim());
+                                                                   Assert.Equal(2, spousal.Engagement.Count); 
+                                                                   Assert.Equal(2, spousal.Marriage.Count); });
+
+
+        }
+
+        [Fact]
+        public void CanParseSeparationEvents()
+        {
+            //Arrange
+            var lines = ResourceHelper.GetLines("CustomSample.MultipleEvents.ged");
+
+            //Act
+            var result = FileParser.ParseLines(lines);
+
+            //Assert
+            result.Errors.ShouldBeEmptyWithFeedback();
+            result.Warnings.ShouldContain("Skipped Person Type='FAMS'");
+
+            Assert.Collection(result.SpouseRelations, spousal => { Assert.Equal("Travis", spousal.From.FirstName.Trim()); Assert.NotNull(spousal.Separation); });
+
         }
     }
 }
