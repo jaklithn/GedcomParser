@@ -5,6 +5,7 @@ namespace GedcomParser.Entities
     public abstract class Relation
     {
         public string FamilyId { get; set; }
+        public string FamilyUid { get; set; }
         public Person From { get; set; }
         public Person To { get; set; }
     }
