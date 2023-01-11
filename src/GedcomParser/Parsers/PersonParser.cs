@@ -146,6 +146,7 @@ namespace GedcomParser.Parsers
 
                     // Deliberately skipped for now
                     case "_GRP":
+                    case "_UPD":
                     case "CONF":
                     case "DSCR":
                     case "FAMS":
