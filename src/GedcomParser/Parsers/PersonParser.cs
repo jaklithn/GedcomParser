@@ -104,6 +104,10 @@ namespace GedcomParser.Parsers
 
                         break;
 
+                    case "NATI":
+                        person.Nationality = chunk.Data;
+                        break;
+
                     case "NATU":
                         person.BecomingCitizen.Add(resultContainer.ParseDatePlace(chunk));
                         break;
@@ -142,6 +146,7 @@ namespace GedcomParser.Parsers
 
                     // Deliberately skipped for now
                     case "_GRP":
+                    case "_UPD":
                     case "CONF":
                     case "DSCR":
                     case "FAMS":
