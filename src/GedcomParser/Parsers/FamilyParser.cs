@@ -143,8 +143,8 @@ namespace GedcomParser.Parsers
                     FamilyId = famChunk.Id,
                     From = parents[1],
                     To = parents[0],
-                    Marriage = marriage,
-                    Divorce = divorce,
+                    Marriage = spousalRelation.Marriage,
+                    Divorce = spousalRelation.Divorce,
                     Relation = relation,
                     Note = note
                 });
