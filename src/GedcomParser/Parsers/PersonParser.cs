@@ -48,6 +48,10 @@ namespace GedcomParser.Parsers
                         person.Death = resultContainer.ParseDatePlace(chunk);
                         break;
 
+                    case "DSCR":
+                        person.Description = chunk.Data;
+                        break;
+
                     case "EDUC":
                         person.Education = chunk.Data;
                         break;
@@ -148,7 +152,6 @@ namespace GedcomParser.Parsers
                     case "_GRP":
                     case "_UPD":
                     case "CONF":
-                    case "DSCR":
                     case "FAMS":
                     case "FAMC":
                     case "HIST":
