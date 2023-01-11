@@ -16,6 +16,7 @@ namespace GedcomParser.Entities
         public DatePlace Baptized { get; set; }
         public string Education { get; set; }
         public string Religion { get; set; }
+        public string Nationality { get; set; }
         public string Note { get; set; }
         public string Changed { get; set; }
         public string Occupation { get; set; }
