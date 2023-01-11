@@ -108,6 +108,7 @@ namespace GedcomParser.Parsers
                     case "NMR":
                     case "OBJE":
                     case "PAGE":
+                    case "RIN":
                     case "SOUR":
                         resultContainer.Warnings.Add($"Skipped Family Type='{chunk.Type}'");
                         break;
