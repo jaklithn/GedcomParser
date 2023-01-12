@@ -18,6 +18,7 @@ namespace GedcomParser.Entities
         public string Religion { get; set; }
         public string Nationality { get; set; }
         public string Note { get; set; }
+        public Citation Citation { get; set; }
         public string Changed { get; set; }
         public string Occupation { get; set; }
         public string Health { get; set; }

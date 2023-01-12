@@ -55,6 +55,7 @@ namespace GedcomParser.Parsers
                     case "EDUC":
                         person.Education = chunk.Data;
                         break;
+
                     case "EVEN":
                         string eventType = GetEventType(chunk);
                         if (person.Events.ContainsKey(eventType))
@@ -148,6 +149,10 @@ namespace GedcomParser.Parsers
                         person.Title = chunk.Data;
                         break;
 
+                    case "SOUR":
+                        person.Citation = resultContainer.ParseCitation(chunk);
+                        break;
+
                     // Deliberately skipped for now
                     case "_GRP":
                     case "_UPD":
@@ -160,7 +165,6 @@ namespace GedcomParser.Parsers
                     case "OBJE":
                     case "PAGE":
                     case "RIN":
-                    case "SOUR":
                         resultContainer.Warnings.Add($"Skipped Person Type='{chunk.Type}'");
                         break;
 

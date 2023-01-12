@@ -24,16 +24,17 @@ namespace GedcomParser.Parsers
                         resultContainer.AddIdChunk(chunk);
                         break;
 
+                    case "SOUR":
+                        resultContainer.ParseSource(chunk);
+                        resultContainer.AddIdChunk(chunk);
+                        break;
+
+                    // Deliberately skipped for now
                     case "NOTE":
                     case "OBJE":
                     case "REPO":
                     case "SUBM":
                     case "SUBN":
-                    case "SOUR":
-                        resultContainer.AddIdChunk(chunk);
-                        break;
-
-                    // Deliberately skipped for now
                     case "HEAD":
                     case "TRLR":
                     case "CSTA": // Child status; used as 'enum' by Reunion software
@@ -56,6 +57,7 @@ namespace GedcomParser.Parsers
             switch (chunk.Type)
             {
                 case "NOTE":
+                case "SOUR":
                     return 0;
                 case "INDI":
                     return 1;
