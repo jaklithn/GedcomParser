@@ -26,9 +26,12 @@ namespace GedcomParser.Parsers
                             citation.Page = chunk.Data;
                             break;
 
+                        case "QUAY":
+                            citation.CertaintyAssessment = resultContainer.ParseDataQuality(chunk.Data, incomingChunk);
+                            break;
+
                         case "DATA":
                         case "EVEN":
-                        case "QUAY":
                             resultContainer.Warnings.Add($"Skipped Source Citation Type='{chunk.Type}'");
                             break;
 
@@ -56,6 +59,26 @@ namespace GedcomParser.Parsers
             }
 
             return citation;
+        }
+
+        internal static Citation.DataQuality ParseDataQuality(this ResultContainer resultContainer, string data, GedcomChunk incomingChunk)
+        {
+            var dataQuality = Citation.DataQuality.Unknown;
+
+            if(data.IsSpecified())
+            {
+                var value = Convert.ToInt32(data);
+                if (value >= 0 && value <= 3)
+                    dataQuality = (Citation.DataQuality)value;
+            }
+            else
+            {
+                {
+                    throw new Exception($"Unable to find data quality type ('QUAY') in '{incomingChunk.Type}' with Id='{incomingChunk.Reference}'");
+                }
+            }
+
+            return dataQuality;
         }
 
         internal static string GetEventType(GedcomChunk chunk)
