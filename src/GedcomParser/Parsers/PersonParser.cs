@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using GedcomParser.Entities;
 using GedcomParser.Entities.Internal;
+using GedcomParser.Extensions;
+using static GedcomParser.Entities.Person;
 
 namespace GedcomParser.Parsers
 {
@@ -10,7 +12,7 @@ namespace GedcomParser.Parsers
     {
         internal static void ParsePerson(this ResultContainer resultContainer, GedcomChunk indiChunk)
         {
-            var person = new Person {Id = indiChunk.Id};
+            var person = new Person { Id = indiChunk.Id };
 
             foreach (var chunk in indiChunk.SubChunks)
             {
@@ -62,7 +64,7 @@ namespace GedcomParser.Parsers
                         {
                             person.Events[eventType].Add(resultContainer.ParseDatePlace(chunk));
                         }
-                        else 
+                        else
                         {
                             person.Events.Add(eventType, new List<DatePlace>
                             {
@@ -160,11 +162,21 @@ namespace GedcomParser.Parsers
                             person.Notes.Add(resultContainer.ParseNote(note.Data, note));
                         break;
 
+                    case "FAMC":
+                        person.FamilyChildId = chunk.Reference;
+                        var pedigreeChunk = chunk.SubChunks.SingleOrDefault(c => c.Type == "PEDI");
+                        if (pedigreeChunk != null)
+                            person.Pedigree = resultContainer.ParsePedigree(pedigreeChunk);
+
+                        var childNote = chunk.SubChunks.SingleOrDefault(c => c.Type == "NOTE");
+                        if (childNote != null)
+                            person.Notes.Add(resultContainer.ParseNote(childNote.Data, childNote));
+                        break;
+
                     // Deliberately skipped for now
                     case "_GRP":
                     case "_UPD":
                     case "CONF":
-                    case "FAMC":
                     case "HIST":
                     case "NCHI":
                     case "NMR":
@@ -182,8 +194,29 @@ namespace GedcomParser.Parsers
 
             resultContainer.Persons.Add(person);
         }
+        internal static Person.PedigreeType ParsePedigree(this ResultContainer resultContainer, GedcomChunk incomingChunk)
+        {
+            var pedigree = PedigreeType.Birth;
 
-        internal static string GetEventType(GedcomChunk chunk)
+            if (incomingChunk != null)
+            {
+                var pedigreeValue = incomingChunk.Data;
+                if (!pedigreeValue.IsNullOrEmpty())
+                {
+                    try
+                    {
+                        pedigree = (PedigreeType)Enum.Parse(typeof(PedigreeType), pedigreeValue, true); // case insensitive
+                    }
+                    catch 
+                    {
+                        resultContainer.Errors.Add($"Failed to convert String to Enum in Pedigree Type ='{incomingChunk.Type}'");
+                    }
+                }
+            }
+
+            return pedigree;
+        }
+            internal static string GetEventType(GedcomChunk chunk)
         {
             return chunk.SubChunks.SingleOrDefault(c => c.Type == "TYPE")?.Data.ToLower();
         }
