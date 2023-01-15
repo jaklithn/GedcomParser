@@ -120,7 +120,15 @@ namespace GedcomParser.Parsers
                         break;
 
                     case "NOTE":
-                        person.Notes.Add(resultContainer.ParseText(chunk.Data, chunk));
+                        {
+                            var noteType = chunk.Type;
+                            if (!person.Notes.ContainsKey(noteType))
+                                person.Notes.Add(noteType, new List<string>());
+
+                            var noteString = resultContainer.ParseNote(chunk.Data, chunk);
+                            if (!noteString.IsNullOrEmpty())
+                                person.Notes[noteType].Add(noteString);
+                        }
                         break;
 
                     case "OCCU":
@@ -156,28 +164,59 @@ namespace GedcomParser.Parsers
                         break;
 
                     case "FAMS":
-                        person.FamilyId = chunk.Reference;
-                        var note = chunk.SubChunks.SingleOrDefault(c => c.Type == "NOTE");
-                        if (note != null)
-                            person.Notes.Add(resultContainer.ParseNote(note.Data, note));
+                        {
+                            person.FamilyId = chunk.Reference;
+                            var note = chunk.SubChunks.SingleOrDefault(c => c.Type == "NOTE");
+                            if (note != null)
+                            {
+                                var famsType = chunk.Type;
+                                if (!person.Notes.ContainsKey(famsType))
+                                    person.Notes.Add(famsType, new List<string>());
+
+                                var noteString = resultContainer.ParseNote(note.Data, note);
+                                if (!noteString.IsNullOrEmpty())
+                                    person.Notes[famsType].Add(noteString);
+                            }
+                        }
                         break;
 
                     case "FAMC":
-                        person.FamilyChildId = chunk.Reference;
-                        var pedigreeChunk = chunk.SubChunks.SingleOrDefault(c => c.Type == "PEDI");
-                        if (pedigreeChunk != null)
-                            person.Pedigree = resultContainer.ParsePedigree(pedigreeChunk);
+                        {
+                            person.FamilyChildId = chunk.Reference;
+                            var pedigreeChunk = chunk.SubChunks.SingleOrDefault(c => c.Type == "PEDI");
+                            if (pedigreeChunk != null)
+                                person.Pedigree = resultContainer.ParsePedigree(pedigreeChunk);
 
-                        var childNote = chunk.SubChunks.SingleOrDefault(c => c.Type == "NOTE");
-                        if (childNote != null)
-                            person.Notes.Add(resultContainer.ParseNote(childNote.Data, childNote));
+                            var childNote = chunk.SubChunks.SingleOrDefault(c => c.Type == "NOTE");
+                            if (childNote != null)
+                            {
+                                var famcType = chunk.Type;
+                                if (!person.Notes.ContainsKey(famcType))
+                                    person.Notes.Add(famcType, new List<string>());
+
+                                var noteString = resultContainer.ParseNote(childNote.Data, childNote);
+                                if (!noteString.IsNullOrEmpty())
+                                    person.Notes[famcType].Add(noteString);
+                            }
+                        }
+                        break;
+
+                    case "HIST":
+                        {
+                            var histType = chunk.Type;
+                            if (!person.Notes.ContainsKey(histType))
+                                person.Notes.Add(histType, new List<string>());
+
+                            var noteString = resultContainer.ParseNote(chunk.Data, chunk);
+                            if (!noteString.IsNullOrEmpty())
+                                person.Notes[histType].Add(noteString);
+                        }
                         break;
 
                     // Deliberately skipped for now
                     case "_GRP":
                     case "_UPD":
                     case "CONF":
-                    case "HIST":
                     case "NCHI":
                     case "NMR":
                     case "OBJE":
@@ -194,6 +233,7 @@ namespace GedcomParser.Parsers
 
             resultContainer.Persons.Add(person);
         }
+
         internal static Person.PedigreeType ParsePedigree(this ResultContainer resultContainer, GedcomChunk incomingChunk)
         {
             var pedigree = PedigreeType.Birth;
