@@ -83,6 +83,20 @@ namespace GedcomParser.Test
         }
 
         [Fact]
+        public void CanParseIdentCONT()
+        {
+            // Arrange
+            var lines = ResourceHelper.GetLines("GedcomStandard.IdentCONT.GED");
+
+            // Act
+            var result = FileParser.ParseLines(lines);
+
+            // Assert
+            result.Errors.ShouldBeEmptyWithFeedback();
+            result.Warnings.ShouldBeEmptyWithFeedback();
+        }
+
+        [Fact]
         public void CanParseReMarriage()
         {
             // Arrange
