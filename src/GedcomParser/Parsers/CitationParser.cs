@@ -51,8 +51,11 @@ namespace GedcomParser.Parsers
                             break;
 
                         case "EVEN":
-                            resultContainer.Warnings.Add($"Skipped Source Citation Type='{chunk.Type}'");
+                            citation.Events.Add(resultContainer.ParseEvent(chunk));
                             break;
+
+                         // resultContainer.Warnings.Add($"Skipped Source Citation Type='{chunk.Type}'");
+                         // break;
 
                         default:
                             resultContainer.Errors.Add($"Failed to handle Source Citation Type='{chunk.Type}'");

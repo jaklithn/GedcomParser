@@ -1,4 +1,6 @@
-﻿namespace GedcomParser.Entities
+﻿using System.Collections.Generic;
+
+namespace GedcomParser.Entities
 {
     public class Citation
     {
@@ -7,6 +9,7 @@
         public DatePlace Date { get; set; }
         public string Text { get; set; }
         public DataQuality CertaintyAssessment { get; set; }
+        public List<Event> Events { get; set; } = new List<Event>();
         public enum DataQuality
         {
             Unknown = -1,

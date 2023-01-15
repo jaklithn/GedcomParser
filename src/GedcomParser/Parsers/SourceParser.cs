@@ -68,7 +68,7 @@ namespace GedcomParser.Parsers
             resultContainer.Sources.Add(source);
         }
 
-        internal static string GetEventType(GedcomChunk chunk)
+        internal static string GetSourceType(GedcomChunk chunk)
         {
             return chunk.SubChunks.SingleOrDefault(c => c.Type == "TYPE")?.Data.ToLower();
         }
