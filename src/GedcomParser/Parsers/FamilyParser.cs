@@ -89,7 +89,7 @@ namespace GedcomParser.Parsers
                         break;
 
                     case "NOTE":
-                        note = resultContainer.ParseNote(note, chunk);
+                        note = resultContainer.ParseNote(chunk.Data, chunk);
                         break;
 
                     case "WIFE":

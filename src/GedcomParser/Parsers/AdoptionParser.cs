@@ -16,7 +16,7 @@ namespace GedcomParser.Parsers
                 switch (chunk.Type)
                 {
                     case "NOTE":
-                        adoption.Note = resultContainer.ParseNote(adoption.Note, chunk);
+                        adoption.Note = resultContainer.ParseNote(chunk.Data, chunk);
                         break;
 
                     case "TYPE":

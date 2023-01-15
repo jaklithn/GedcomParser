@@ -24,7 +24,7 @@ namespace GedcomParser.Parsers
             var note = chunk.SubChunks.SingleOrDefault(c => c.Type == "NOTE");
             if (note != null)
             {
-                datePlace.Note = resultContainer.ParseNote(datePlace.Note, note);
+                datePlace.Note = resultContainer.ParseNote(note.Data, note);
             }
 
             var description = chunk.Data;
