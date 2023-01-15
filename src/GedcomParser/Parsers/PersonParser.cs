@@ -153,11 +153,17 @@ namespace GedcomParser.Parsers
                         person.Citation = resultContainer.ParseCitation(chunk);
                         break;
 
+                    case "FAMS":
+                        person.FamilyId = chunk.Reference;
+                        var note = chunk.SubChunks.SingleOrDefault(c => c.Type == "NOTE");
+                        if (note != null)
+                            person.Notes.Add(resultContainer.ParseNote(note.Data, note));
+                        break;
+
                     // Deliberately skipped for now
                     case "_GRP":
                     case "_UPD":
                     case "CONF":
-                    case "FAMS":
                     case "FAMC":
                     case "HIST":
                     case "NCHI":
