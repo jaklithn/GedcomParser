@@ -22,9 +22,12 @@ namespace GedcomParser.Parsers
                     case "TYPE":
                         adoption.Type = chunk.Data;
                         break;
+                    
+                    case "DATE":
+                        adoption.DatePlace = resultContainer.ParseDatePlace(chunk);
+                        break;
 
                     // Deliberately skipped for now
-                    case "DATE":
                     case "FAMC":
                     case "PLAC":
                     case "SOUR":
