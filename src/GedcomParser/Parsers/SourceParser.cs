@@ -46,7 +46,7 @@ namespace GedcomParser.Parsers
                         break;
 
                     case "REPO":
-                        source.RepositoryId = chunk.Data;
+                        source.RepositoryId = chunk.Data; // TODO - Add repository class
                         break;
 
                     case "RIN":
