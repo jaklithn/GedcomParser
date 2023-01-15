@@ -22,15 +22,34 @@ namespace GedcomParser.Parsers
                 {
                     switch (chunk.Type)
                     {
+                        /* Structure of SOURCE_CITATION:=
+                            n  SOUR <XREF:SOUR>
+                            +1 PAGE <WHERE_WITHIN_SOURCE>
+                            +1 EVEN <EVENT_TYPE_CITED_FROM>
+                                +2 ROLE <ROLE_IN_EVENT>
+                            +1 DATA
+                                +2 DATE <ENTRY_RECORDING_DATE>
+                                +2 TEXT <TEXT_FROM_SOURCE>
+                            +1 <<MULTIMEDIA_LINK>>
+                            +1 <<NOTE_STRUCTURE>>
+                            +1 QUAY <CERTAINTY_ASSESSMENT>
+                         */
+
                         case "PAGE":
                             citation.Page = chunk.Data;
                             break;
 
                         case "QUAY":
-                            citation.CertaintyAssessment = resultContainer.ParseDataQuality(chunk.Data, incomingChunk);
+                            citation.CertaintyAssessment = resultContainer.ParseCitationDataQuality(chunk.Data, incomingChunk);
                             break;
 
                         case "DATA":
+                            citation.Date = resultContainer.ParseDatePlace(chunk);
+                            var text = chunk.SubChunks.SingleOrDefault(c => c.Type == "TEXT");
+                            if(text != null)
+                                citation.Text = resultContainer.ParseText(text.Data, text);
+                            break;
+
                         case "EVEN":
                             resultContainer.Warnings.Add($"Skipped Source Citation Type='{chunk.Type}'");
                             break;
@@ -61,7 +80,7 @@ namespace GedcomParser.Parsers
             return citation;
         }
 
-        internal static Citation.DataQuality ParseDataQuality(this ResultContainer resultContainer, string data, GedcomChunk incomingChunk)
+        internal static Citation.DataQuality ParseCitationDataQuality(this ResultContainer resultContainer, string data, GedcomChunk incomingChunk)
         {
             var dataQuality = Citation.DataQuality.Unknown;
 

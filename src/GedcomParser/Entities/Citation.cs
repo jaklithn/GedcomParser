@@ -4,6 +4,8 @@
     {
         public string Id { get; set; }
         public string Page { get; set; }
+        public DatePlace Date { get; set; }
+        public string Text { get; set; }
         public DataQuality CertaintyAssessment { get; set; }
         public enum DataQuality
         {
