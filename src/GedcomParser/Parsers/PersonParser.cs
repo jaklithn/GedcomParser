@@ -76,7 +76,7 @@ namespace GedcomParser.Parsers
                         break;
 
                     case "FACT":
-                        person.Note = resultContainer.ParseNote(chunk.Data, chunk);
+                        person.Facts.Add(resultContainer.ParseText(chunk.Data, chunk));
                         break;
 
                     case "GRAD":
@@ -118,7 +118,7 @@ namespace GedcomParser.Parsers
                         break;
 
                     case "NOTE":
-                        person.Note = resultContainer.ParseNote(chunk.Data, chunk);
+                        person.Notes.Add(resultContainer.ParseText(chunk.Data, chunk));
                         break;
 
                     case "OCCU":
