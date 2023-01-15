@@ -30,7 +30,7 @@ namespace GedcomParser.Parsers
                         break;
 
                     case "TITL":
-                        source.Title = chunk.Data;
+                        source.Title = resultContainer.ParseText(chunk.Data, chunk);
                         break;
 
                     case "PUBL":
@@ -38,7 +38,7 @@ namespace GedcomParser.Parsers
                         break;
 
                     case "TEXT":
-                        source.Text = chunk.Data;
+                        source.Text = resultContainer.ParseText(chunk.Data, chunk);
                         break;
 
                     case "REFN":
