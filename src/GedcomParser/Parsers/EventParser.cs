@@ -17,6 +17,7 @@ namespace GedcomParser.Parsers
             {
                 switch (chunk.Type)
                 {
+                    case "PLAC":
                     case "DATE":
                         currentEvent.DatePlace = resultContainer.ParseDatePlace(chunk);
                         break;
