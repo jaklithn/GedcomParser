@@ -94,12 +94,12 @@ namespace GedcomParser.Parsers
                         var nameSections = chunk.Data.Split("/".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
                         if (nameSections.Length > 0)
                         {
-                            person.FirstName = nameSections[0];
+                            person.FirstName = nameSections[0].Trim();
                         }
 
                         if (nameSections.Length > 1)
                         {
-                            person.LastName = nameSections[1];
+                            person.LastName = nameSections[1].Trim();
                         }
 
                         break;
